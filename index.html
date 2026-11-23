@@ -1,251 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="no">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marius Clausen Digranes - Portfolio</title>
-  <style>
-    /* Farger */
-    :root {
-      --primary-dark: #2d3a45; /* Mørk blå/grå */
-      --primary-light: #e5e5e5; /* Lys grå */
-      --accent-blue: #4e6d77; /* Myk blå */
-      --highlight-color: #f4a261; /* Varme oransjeaktig farge */
-      --white: #ffffff;
-      --black: #000000;
-    }
-
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: var(--primary-light);
-      color: var(--primary-dark);
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--primary-dark);
-      color: var(--white);
-      text-align: center;
-      padding: 4rem 0;
-    }
-
-    header img {
-      max-width: 250px;
-      height: auto;
-      border-radius: 50%;
-      border: 5px solid var(--white);
-      margin-bottom: 1rem;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.5rem;
-      color: var(--highlight-color);
-    }
-
-    nav {
-      background: var(--accent-blue);
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      margin: 0 0.5rem;
-    }
-
-    nav a:hover {
-      background: var(--highlight-color);
-      color: var(--primary-dark);
-      border-radius: 5px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
-    section h2 {
-      font-size: 2rem;
-      color: var(--primary-dark);
-      text-align: center;
-      border-bottom: 3px solid var(--highlight-color);
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-
-    .about, .cv, .projects, .contact {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .about p {
-      text-align: center;
-      font-size: 1.2rem;
-    }
-
-    .cv ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    .cv ul li {
-      background: var(--highlight-color);
-      margin: 0.5rem 0;
-      padding: 0.8rem;
-      border-radius: 5px;
-      color: var(--primary-dark);
-    }
-
-    .projects .project-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: var(--primary-light);
-      border: 1px solid var(--highlight-color);
-      border-radius: 10px;
-      padding: 1.5rem;
-      width: calc(33.333% - 1rem);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .project-card h3 {
-      color: var(--primary-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .project-card p {
-      color: var(--accent-blue);
-    }
-
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact form input, .contact form textarea {
-      padding: 0.8rem;
-      border: 1px solid var(--primary-dark);
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-
-    .contact form button {
-      background: var(--highlight-color);
-      color: var(--white);
-      padding: 0.8rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .contact form button:hover {
-      background: var(--primary-dark);
-    }
-
-    footer {
-      background: var(--accent-blue);
-      color: var(--white);
-      text-align: center;
-      padding: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .project-card {
-        width: calc(50% - 1rem);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .project-card {
-        width: 100%;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f0e7">
+  <meta name="description" content="Marius Digranes – portefølje innen UX, interaksjonsdesign og tjenestedesign. Research, brukertesting og menneskesentrert problemløsning.">
+  <meta property="og:title" content="Marius Digranes – UX & interaksjonsdesign">
+  <meta property="og:description" content="Fra brukerinnsikt til gjennomtenkte digitale løsninger. Se prosjekter, erfaring og designprosessen.">
+  <meta property="og:type" content="website">
+  <title>Marius Digranes – UX, interaksjonsdesign og tjenestedesign</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <img src="path_to_your_image.jpg" alt="Marius Clausen Digranes">
-    <h1>Marius Clausen Digranes</h1>
-    <p>Medie- og interaksjonsdesign student</p>
+  <a class="skip-link" href="#main">Hopp til innhold</a>
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="#topp" aria-label="Marius Digranes – til toppen"><span class="brand-mark" aria-hidden="true">M</span>Marius Digranes</a>
+      <nav class="nav-links" aria-label="Hovedmeny">
+        <a href="#prosjekter">Prosjekter</a>
+        <a href="#om-meg">Om meg</a>
+        <a href="#erfaring">Erfaring</a>
+        <a href="#cv">CV</a>
+        <a class="nav-accent" href="#kontakt">Kontakt ↗</a>
+      </nav>
+    </div>
   </header>
-
-  <nav>
-    <a href="#about">Om Meg</a>
-    <a href="#cv">CV</a>
-    <a href="#projects">Prosjekter</a>
-    <a href="#contact">Kontakt</a>
-  </nav>
-
-  <div class="container">
-    <section id="about" class="about">
-      <h2>Om Meg</h2>
-      <p>Hei! Jeg heter Marius Clausen Digranes, og jeg studerer Medie- og interaksjonsdesign. Jeg er lidenskapelig opptatt av brukeropplevelse, design og webutvikling. Her kan du finne mer om meg, mine prosjekter og CV.</p>
-    </section>
-
-    <section id="cv" class="cv">
-      <h2>CV</h2>
-      <ul>
-        <li>Bachelor i Medie- og interaksjonsdesign - [Universitet]</li>
-        <li>Frivillig arbeid med webdesignprosjekter</li>
-        <li>Erfaring med HTML, CSS, JavaScript</li>
-      </ul>
-    </section>
-
-    <section id="projects" class="projects">
-      <h2>Prosjekter</h2>
-      <div class="project-list">
-        <div class="project-card">
-          <h3>Prosjekt 1</h3>
-          <p>Beskrivelse av prosjektet.</p>
+  <main id="main">
+    <section class="container hero" id="topp" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Portefølje / Bergen / 2026</p>
+        <h1 id="hero-title">Hei, jeg er <em>Marius.</em></h1>
+        <p>Jeg utforsker problemer, forstår mennesker og utvikler digitale løsninger. Mest av alt liker jeg reisen fra et åpent spørsmål til en gjennomtenkt brukeropplevelse.</p>
+        <div class="hero-links">
+          <a class="button" href="#prosjekter">Utforsk prosjektene <span aria-hidden="true">↘</span></a>
+          <a class="text-link" href="#om-meg">Bli bedre kjent med meg</a>
         </div>
-        <div class="project-card">
-          <h3>Prosjekt 2</h3>
-          <p>Beskrivelse av prosjektet.</p>
+      </div>
+      <div class="hero-art" aria-label="Illustrasjon i vintage-inspirert plakatstil med initialene MD.">
+        <div class="poster" role="img" aria-label="Dekorativ plakat med sirkulært mønster og initialene M og D">
+          <div class="poster-top"><span>Research / Design / People</span><span>No. 01—26</span></div>
+          <div class="poster-circles"></div>
+          <div class="poster-bottom"><strong>Form &amp; funksjon</strong><span>Utvalgt arbeid<br>2024—2026</span></div>
+        </div>
+        <div class="stamp" aria-hidden="true">Nysgjerrig<br>av natur<br>✳</div>
+      </div>
+    </section>
+
+    <section class="section" id="prosjekter" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / Utvalgte prosjekter</p><h2 id="projects-title">Arbeid &amp; prosess.</h2></div>
+          <p class="section-sub">Fra innsiktsarbeid og prototyping til konkrete designgrep. Et utvalg av prosjekter fra studier og samarbeid.</p>
+        </div>
+        <div class="projects-grid">
+          <a class="project" href="snapseek.html" aria-label="Les casestudien om SnapSeek">
+            <div class="project-visual visual-snap">
+              <span class="visual-label">01 / UX Research · Redesign</span>
+              <div>
+                <div class="search-motif"><span>⌕ &nbsp; Finn et øyeblikk …</span><span>↗</span></div>
+                <div class="mini-gallery" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="project-meta"><span>Studentprosjekt / MIX204</span><span>2026</span></div>
+            <h3>SnapSeek</h3>
+            <p>Fra et avansert ekspertsystem til en mer forståelig og tilgjengelig søkeopplevelse.</p>
+            <span class="project-cta">Les casestudien ↗</span>
+          </a>
+          <article class="project">
+            <div class="project-visual visual-spark">
+              <span class="visual-label">02 / Innsiktsarbeid · Produktdesign</span>
+              <div class="spark-window" aria-hidden="true">
+                <span class="line"></span><span class="line" style="width:40%"></span>
+                <div class="tiles"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="project-meta"><span>Studentprosjekt / MIX203</span><span>2025</span></div>
+            <h3>Sparkit</h3>
+            <p>Et verktøy for å strukturere arbeidsprosesser, dele kunnskap og samarbeide på tvers av designteam.</p>
+            <span class="project-cta" aria-label="Casestudie under arbeid">Casestudie under arbeid</span>
+          </article>
+          <article class="project">
+            <div class="project-visual visual-job">
+              <span class="visual-label">03 / UX/UI · Konseptutvikling</span>
+              <span class="job-letter" aria-hidden="true">Jobb.</span>
+              <span class="visual-label">TekLab / Studentinnovasjon</span>
+            </div>
+            <div class="project-meta"><span>Studentprosjekt / MIX100</span><span>2024</span></div>
+            <h3>Jobbportalen</h3>
+            <p>En digital idé for å koble studenter til relevante småjobber. Kåret til beste prosjekt i MIX100.</p>
+            <span class="project-cta">Casestudie under arbeid</span>
+          </article>
+          <article class="project">
+            <div class="project-visual visual-snow">
+              <span class="visual-label">04 / Interaksjonsdesign · API-er</span>
+              <span class="mountain-title">Skredvett</span>
+            </div>
+            <div class="project-meta"><span>Studentprosjekt / Teknisk utvikling</span><span>Prototype</span></div>
+            <h3>Skredvett</h3>
+            <p>Kart, værdata og API-integrasjoner samlet i et konsept for visualisering av skredfare.</p>
+            <span class="project-cta">Casestudie under arbeid</span>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="contact">
-      <h2>Kontakt</h2>
-      <form action="mailto:marius.digr@gmail.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Navn" required>
-        <input type="email" name="email" placeholder="E-post" required>
-        <textarea name="message" rows="5" placeholder="Din melding" required></textarea>
-        <button type="submit">Send Melding</button>
-      </form>
+    <section class="process-band" aria-labelledby="process-title">
+      <div class="container process-layout">
+        <div><p class="eyebrow">02 / Hvordan jeg arbeider</p><h2 id="process-title">Gode løsninger begynner med <em>gode spørsmål.</em></h2></div>
+        <div class="process-steps">
+          <article><span class="num">01.</span><h3>Forstå</h3><p>Undersøke konteksten, stille spørsmål og finne ut hva brukerne faktisk trenger.</p></article>
+          <article><span class="num">02.</span><h3>Utforske</h3><p>Oversette innsikt til muligheter, skisser og konsepter som kan diskuteres og utfordres.</p></article>
+          <article><span class="num">03.</span><h3>Teste</h3><p>Observere hvordan mennesker bruker løsningen, og oppdage det vi selv har oversett.</p></article>
+          <article><span class="num">04.</span><h3>Forbedre</h3><p>Videreutvikle med utgangspunkt i funn, avveininger og det som skaper mest verdi.</p></article>
+        </div>
+      </div>
     </section>
-  </div>
 
-  <footer>
-    <p>&copy; 2025 Marius Clausen Digranes. Alle rettigheter reservert.</p>
-  </footer>
+    <section class="section" id="om-meg" aria-labelledby="about-title">
+      <div class="container info-grid">
+        <div>
+          <p class="eyebrow">03 / Om meg</p>
+          <h2 id="about-title">Litt om personen bak prosjektene.</h2>
+          <p class="large-body">Jeg er student i medie- og interaksjonsdesign ved Universitetet i Bergen, med særlig interesse for UX-research, brukertesting og problemløsning.</p>
+          <p class="large-body">Det som driver meg, er å forstå hvorfor noe ikke fungerer – og finne en løsning som fungerer bedre for menneskene som skal bruke den. Jeg liker både det analytiske arbeidet og den visuelle delen der innsikten får form.</p>
+          <div class="fact-box"><strong>Design møter virkeligheten</strong><p>Gjennom arbeid på Haukeland universitetssjukehus har jeg også fått erfaring med hvordan mennesker og arbeidsprosesser møtes i en travel helsetjeneste. Det har gjort meg nysgjerrig på digitale tjenester som virkelig avlaster brukeren.</p></div>
+        </div>
+        <div>
+          <p class="eyebrow">Kort fortalt</p>
+          <div class="timeline">
+            <div class="timeline-item"><span class="year">2024–2027</span><div><h3>Universitetet i Bergen</h3><p>Bachelor i medie- og interaksjonsdesign, planlagt fullført våren 2027.</p></div></div>
+            <div class="timeline-item"><span class="year">Høst 2026</span><div><h3>Utrecht University</h3><p>Utveksling, med faglig erfaring fra et internasjonalt studiemiljø.</p></div></div>
+            <div class="timeline-item"><span class="year">Sommer 2025</span><div><h3>Idito</h3><p>UX-praksis: brukerinnsikt, intervjuer og brukertesting knyttet til digitale arbeidsprosesser.</p></div></div>
+            <div class="timeline-item"><span class="year">Siden 2022</span><div><h3>Haukeland universitetssjukehus</h3><p>Deltidsarbeid som forsyningsportør i Helse Bergen.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="erfaring" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-heading">
+          <div><p class="eyebrow">04 / Erfaring</p><h2 id="experience-title">Ulike perspektiver.</h2></div>
+          <p class="section-sub">Erfaring fra designpraksis, arbeidsliv og samarbeid som påvirker hvordan jeg tilnærmer meg problemer.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item"><span class="year">2025</span><div><h3>UX-praksis · Idito</h3><p>Brukerinnsikt, intervjuer og brukertesting i arbeid med lønnsgodkjenningslister for anleggsbransjen.</p></div></div>
+          <div class="timeline-item"><span class="year">2022–nå</span><div><h3>Forsyningsportør · Helse Bergen</h3><p>Arbeid i sykehusets logistikk- og forsyningstjeneste, med innsikt i drift og samhandling i en kompleks organisasjon.</p></div></div>
+          <div class="timeline-item"><span class="year">Studentverv</span><div><h3>SVI Løpegruppe · Leder</h3><p>Planlegging og koordinering av trening, arrangementer og et sosialt studentmiljø.</p></div></div>
+        </div>
+        <div class="cv-block" id="cv">
+          <div><h3>CV og mer bakgrunn</h3><p>CV på norsk og engelsk legges til når dokumentene er ferdigstilt.</p></div>
+          <div class="cv-actions"><span class="muted-pill">Norsk CV · Kommer</span><span class="muted-pill">English CV · Coming soon</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="contact" id="kontakt" aria-labelledby="contact-title">
+      <div class="container contact-layout">
+        <div><p class="eyebrow">05 / Kontakt</p><h2 id="contact-title">Har du et prosjekt<br>i tankene?</h2><p>Jeg er interessert i muligheter innen UX, interaksjonsdesign og tjenestedesign. Ta gjerne kontakt for en prat.</p></div>
+        <div><a class="button" href="https://github.com/Teammember102" target="_blank" rel="noopener noreferrer">Se GitHub-profilen min ↗</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><span>© 2026 Marius Digranes</span><span>Designet med nysgjerrighet, omtanke og en forkjærlighet for god typografi.</span></div></footer>
 </body>
 </html>
