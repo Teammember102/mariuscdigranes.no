@@ -1,0 +1,27 @@
+/* Short, image-led project pages. Shared across all projects. */
+.project-page{padding-top:clamp(65px,9vw,130px);padding-bottom:clamp(70px,10vw,140px)}
+.project-intro{max-width:920px}
+.project-intro h1{font:400 clamp(4.6rem,10vw,9.4rem)/.96 var(--serif);letter-spacing:-.075em;margin:0 0 clamp(28px,4vw,54px)}
+.project-intro .period{color:var(--rust)}
+.project-intro>p{font-size:clamp(1.12rem,1.55vw,1.37rem);line-height:1.75;max-width:790px;color:var(--ink-soft);margin:0 0 2.2rem}
+.project-facts{display:flex;flex-wrap:wrap;gap:.6rem 2.2rem;color:var(--muted);font-size:.84rem;border-top:1px solid var(--line);padding-top:1.1rem}
+.project-live-link{display:inline-block;margin-top:1.8rem;font-size:.91rem;font-weight:700;text-underline-offset:6px}
+.project-shots{display:grid;grid-template-columns:1fr 1fr;gap:clamp(17px,2.4vw,36px);margin-top:clamp(46px,6vw,90px);align-items:start}
+.project-shot{margin:0;min-width:0}
+.project-shot a{display:block;line-height:0}
+.project-shot img{display:block;width:100%;height:auto;aspect-ratio:1.74;object-fit:cover;object-position:center top;transition:filter .18s}
+.project-shot a:hover img{filter:brightness(.97)}
+.project-shot figcaption{font-size:.77rem;color:var(--muted);padding-top:.8rem}
+.project-award{border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,320px) 1fr;align-items:center;gap:clamp(25px,5vw,80px);margin-top:clamp(70px,9vw,125px);padding-top:clamp(40px,6vw,76px)}
+.project-award img{width:100%;height:auto;display:block}
+.project-award h2{font:400 clamp(2rem,4.3vw,4rem)/1.08 var(--serif);letter-spacing:-.045em;margin:0 0 .9rem}
+.project-award p{color:var(--ink-soft);line-height:1.65;max-width:410px}
+.project-back{display:inline-block;margin-top:clamp(55px,7vw,100px);padding-bottom:.25rem;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;font-size:.85rem}
+@media(max-width:680px){
+ .project-page{padding-top:65px}
+ .project-intro h1{font-size:clamp(3.7rem,13vw,6rem)}
+ .project-shots{grid-template-columns:1fr}
+ .project-shot img{aspect-ratio:auto;object-fit:contain}
+ .project-award{grid-template-columns:1fr}
+ .project-award img{max-width:440px}
+}
