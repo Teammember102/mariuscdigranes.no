@@ -442,32 +442,6 @@ img,video { max-width:100%; display:block; }
 @media(hover:hover) and (pointer:fine) {
   .hero-portrait:hover { transform:rotate(0deg) translateY(-5px); }
 }
-/* Liten illustrert øyelukking: et forsiktig blunk ved hover.
-   Bildet er fortsatt fotografiet; ingen ny identitet/generert portrett. */
-.hero-portrait-wink {
-  position:absolute;
-  z-index:2;
-  left:60.5%;
-  top:42.8%;
-  width:6.1%;
-  height:2.9%;
-  background:linear-gradient(180deg,#C88F83 0%,#D89F91 63%,#B77E76 100%);
-  border-bottom:1px solid rgba(91,55,55,.56);
-  border-radius:60% 58% 48% 48%;
-  opacity:0;
-  transform:rotate(-3deg) scaleY(.08);
-  transform-origin:center top;
-  pointer-events:none;
-}
-@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
-  .hero-portrait:hover .hero-portrait-wink {
-    animation:portrait-wink .8s ease-in-out .14s both;
-  }
-}
-@keyframes portrait-wink {
-  0%,19%,57%,100% { opacity:0; transform:rotate(-3deg) scaleY(.08); }
-  29%,41% { opacity:.94; transform:rotate(-3deg) scaleY(1); }
-}
 @media(max-width:1000px) and (min-width:681px) {
   .home-page .hero-bergen .hero-bergen-inner {
     grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
@@ -498,5 +472,4 @@ img,video { max-width:100%; display:block; }
 }
 @media(prefers-reduced-motion:reduce) {
   .hero-portrait { transition:none;transform:none; }
-  .hero-portrait-wink { display:none;animation:none; }
 }
