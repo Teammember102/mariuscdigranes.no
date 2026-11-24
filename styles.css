@@ -197,3 +197,18 @@ img,video { max-width:100%; display:block; }
   .project-visual,.button { transition:none; }
   .project:hover .project-visual,.button:hover { transform:none; }
 }
+
+/* Mobilnavigasjon: hold alle fire lenkene innenfor skjermbredden. */
+@media (max-width: 680px) {
+  .navbar { gap:.8rem; padding-block:.85rem; }
+  .brand { font-size:1.1rem; }
+  .brand-mark { flex-basis:32px; width:32px; height:32px; margin-right:.6rem; }
+  .nav-links { width:100%; gap:.65rem .9rem; justify-content:space-between; }
+  .nav-links a { font-size:.69rem; letter-spacing:.045em; }
+  .nav-links .nav-accent { padding:.47rem .58rem; }
+  .hero-copy h1 { font-size:clamp(3.2rem, 12vw, 6rem); overflow-wrap:break-word; }
+}
+@media (max-width: 350px) {
+  .nav-links { justify-content:flex-start; }
+  .nav-links a { font-size:.67rem; }
+}

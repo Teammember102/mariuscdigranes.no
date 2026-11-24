@@ -243,43 +243,65 @@
   .journey-event--fourth .journey-copy { grid-column: 4 / -1; }
 }
 
-@media(max-width: 680px) {
-  .journey { padding-top: 68px; }
-  .journey-heading { display: block; padding-bottom: 29px; }
-  .journey-heading h1 { font-size: clamp(4.5rem, 15vw, 7rem); }
-  .journey-range { display: block; padding-top: 26px; padding-bottom: 0; }
-  .journey-timeline { padding-top: 56px; }
-  .journey-event { display: flex; flex-direction: column; align-items: stretch; gap: 20px; }
-  .journey-event--second .journey-photo { order: 0; }
-  .journey-event--second .journey-copy { order: 1; }
-  .journey-photo img { aspect-ratio: 1.55; }
-  .journey-photo--garden img { aspect-ratio: 1.18; }
-  .journey-photo--hospital img { aspect-ratio: 1.82; }
-  .journey-copy { max-width: none; }
-  .journey-year { font-size: 1.75rem; }
-  .journey-copy h2 { font-size: clamp(2.55rem, 10vw, 4rem); margin-block: .7rem 1.05rem; }
-  .journey-copy p { max-width: 58ch; }
-  .journey-connector { height: 68px; }
-  .journey-connector--right::before { left: 24%; width: 47%; }
-  .journey-connector--right::after { left: 71%; }
-  .journey-connector--left::before { left: 24%; width: 47%; }
-  .journey-connector--left::after { left: 24%; }
-  .journey-event--third, .journey-event--fourth { padding-block: 4px; }
-  .gallery-heading { display: block; }
-  .gallery-heading span { display: block; margin-top: 1.1rem; }
-  .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
-  .gallery-grid figure { grid-column: span 1; }
-  .gallery-grid figure:first-child,
-  .gallery-grid figure:nth-child(4) { grid-column: span 2; }
-  .gallery-grid figure:first-child img { aspect-ratio: 5/4; object-position: center 40%; }
-  .gallery-grid figure:nth-child(2) img,
-  .gallery-grid figure:nth-child(3) img { aspect-ratio: 3/4; }
-  .gallery-grid figure:nth-child(5) {
-    grid-column: span 2;
-    width: min(75%, 350px);
-    justify-self: center;
+@media(max-width: 780px) {
+  /* Enkel, kronologisk leseretning: år → tekst → tilhørende bilde/video. */
+  .journey { padding-top: clamp(42px, 8vw, 68px); }
+  .journey-heading { display:block; padding-bottom:25px; }
+  .journey-heading h1 {
+    font-size:clamp(3rem, 11.6vw, 5.9rem);
+    white-space:normal;
+    line-height:1;
   }
-  .about-next { padding-bottom: 65px; }
+  .journey-range { display:none; }
+  .journey-timeline { padding-top:clamp(36px, 6vw, 56px); padding-bottom:32px; }
+  .journey-event {
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:clamp(20px, 4vw, 30px);
+    min-width:0;
+  }
+  .journey-event .journey-copy { order:0; width:100%; max-width:none; }
+  .journey-event .journey-photo { order:1; width:100%; min-width:0; }
+  .journey-event:not(.journey-event--first) {
+    border-top:1px solid var(--line);
+    margin-top:clamp(42px, 8vw, 68px);
+    padding-top:clamp(42px, 8vw, 68px);
+  }
+  .journey-connector { display:none; }
+  .journey-photo img { aspect-ratio:1.55; }
+  .journey-photo--garden img { aspect-ratio:1.18; }
+  .journey-photo--hospital img { aspect-ratio:1.82; }
+  .journey-copy p { max-width:58ch; overflow-wrap:break-word; }
+  .journey-year { font-size:clamp(1.65rem, 5vw, 2rem); }
+  .journey-copy h2 {
+    font-size:clamp(2.3rem, 8vw, 3.8rem);
+    line-height:1.06;
+    margin:.75rem 0 1rem;
+    overflow-wrap:break-word;
+  }
+  .journey-event--third,.journey-event--fourth { padding-bottom:0; }
+  .gallery-heading { display:block; }
+  .gallery-heading span { display:block; margin-top:1.1rem; }
+  .gallery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .gallery-grid figure { grid-column:span 1; }
+  .gallery-grid figure:first-child,
+  .gallery-grid figure:nth-child(4) { grid-column:span 2; }
+  .gallery-grid figure:first-child img { aspect-ratio:5/4; object-position:center 40%; }
+  .gallery-grid figure:nth-child(2) img,
+  .gallery-grid figure:nth-child(3) img { aspect-ratio:3/4; }
+  .gallery-grid figure:nth-child(5) {
+    grid-column:span 2;
+    width:min(75%, 350px);
+    justify-self:center;
+  }
+  .about-next { padding-bottom:65px; }
+}
+@media(max-width: 430px) {
+  .journey-heading h1 { font-size:clamp(2.7rem, 12vw, 3.3rem); }
+  .journey-youtube-meta { align-items:flex-start; }
+  .journey-youtube-meta figcaption { flex-basis:100%; }
+  .journey-youtube-toggle { margin-top:0; }
 }
 
 /* Lydløse videoklipp i tidslinjen – ingen ekstra rammer eller bildeeffekter. */
