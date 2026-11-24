@@ -284,6 +284,21 @@
 
 /* Lydløse videoklipp i tidslinjen – ingen ekstra rammer eller bildeeffekter. */
 .journey-video-frame { position:relative; }
+.journey-video-hitarea {
+  display:block;
+  width:100%;
+  padding:0;
+  margin:0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  text-align:inherit;
+}
+.journey-video-hitarea:focus-visible {
+  outline:3px solid var(--rust);
+  outline-offset:4px;
+}
+.journey-video-hitarea:disabled { cursor:default; }
 .journey-video {
   display:block;
   width:100%;
