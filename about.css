@@ -334,5 +334,22 @@
   aspect-ratio:16/9;
 }
 .journey-youtube-holder > img { object-fit:cover; }
-.journey-youtube-toggle { bottom:auto; top:calc(min(100%, 100vw) * .08); right:12px; }
+.journey-youtube-meta { display:flex; align-items:baseline; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.journey-youtube-meta figcaption { flex:1 1 290px; }
+.journey-youtube-toggle {
+  position:static;
+  flex-shrink:0;
+  margin-top:.8rem;
+  padding:.1rem 0;
+  border:0;
+  border-bottom:1px solid currentColor;
+  border-radius:0;
+  background:transparent;
+  color:var(--muted);
+  font-size:.74rem;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+.journey-youtube-toggle:hover { color:var(--rust); background:transparent; }
+.journey-youtube-toggle:focus-visible { outline-offset:4px; }
 .journey-youtube-frame figcaption a { text-underline-offset:3px; }
