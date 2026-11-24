@@ -312,3 +312,27 @@
 @media (max-width:680px) {
   .journey-video { aspect-ratio:1.55; }
 }
+
+
+/* Basel Tattoo: tidsavgrenset YouTube-klipp i tidslinjen. */
+.journey-youtube-frame { position:relative; }
+.journey-youtube-holder {
+  width:100%;
+  aspect-ratio:16/9;
+  position:relative;
+  overflow:hidden;
+  background:#1b2326;
+}
+.journey-youtube-holder > img,
+.journey-youtube-holder > iframe {
+  display:block;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  aspect-ratio:16/9;
+}
+.journey-youtube-holder > img { object-fit:cover; }
+.journey-youtube-toggle { bottom:auto; top:calc(min(100%, 100vw) * .08); right:12px; }
+.journey-youtube-frame figcaption a { text-underline-offset:3px; }
