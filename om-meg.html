@@ -34,10 +34,13 @@
 
       <ol class="journey-timeline">
         <li class="journey-event journey-event--first">
-          <figure class="journey-photo">
-            <img src="assets/norske-talenter.jpg" width="2048" height="1365"
-                 alt="Fotballtriks på scenen under Norske Talenter, med røde scenelys i bakgrunnen"
-                 fetchpriority="high">
+          <figure class="journey-photo journey-video-frame"
+                  data-parts="assets/norske-talenter-video.part00,assets/norske-talenter-video.part01,assets/norske-talenter-video.part02,assets/norske-talenter-video.part03,assets/norske-talenter-video.part04,assets/norske-talenter-video.part05,assets/norske-talenter-video.part06">
+            <video class="journey-video" muted loop playsinline preload="none"
+                   poster="assets/norske-talenter.jpg"
+                   aria-label="Et kort, lydløst klipp fra opptredenen i Norske Talenter 2019"></video>
+            <button class="journey-video-toggle" type="button" aria-label="Spill av Norske Talenter-videoen">Spill av <span aria-hidden="true">▶</span></button>
+            <noscript><img src="assets/norske-talenter.jpg" alt="Fotballtriks på scenen under Norske Talenter" width="2048" height="1365"></noscript>
           </figure>
           <div class="journey-copy">
             <span class="journey-year">2018–2021</span>
@@ -131,5 +134,6 @@
       <a href="index.html">Til forsiden ↗</a>
     </div>
   </footer>
+  <script src="journey-video.js" defer></script>
 </body>
 </html>

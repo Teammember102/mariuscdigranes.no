@@ -281,3 +281,34 @@
   }
   .about-next { padding-bottom: 65px; }
 }
+
+/* Lydløse videoklipp i tidslinjen – ingen ekstra rammer eller bildeeffekter. */
+.journey-video-frame { position:relative; }
+.journey-video {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1.52;
+  object-fit:cover;
+  background:#1c2530;
+}
+.journey-video-toggle {
+  position:absolute;
+  right:14px;
+  bottom:14px;
+  z-index:2;
+  border:1px solid rgba(255,255,255,.65);
+  color:#fff;
+  background:rgba(22,32,28,.78);
+  padding:8px 12px;
+  border-radius:3px;
+  font:600 .75rem/1.2 var(--sans);
+  letter-spacing:.015em;
+  cursor:pointer;
+}
+.journey-video-toggle:hover { background:#202a25; }
+.journey-video-toggle:disabled { opacity:.7; cursor:wait; }
+.journey-video-toggle span { margin-left:.35rem; }
+@media (max-width:680px) {
+  .journey-video { aspect-ratio:1.55; }
+}
