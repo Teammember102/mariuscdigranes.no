@@ -67,6 +67,15 @@
   aspect-ratio: 1.52;
   object-fit: cover;
 }
+.journey-photo--garden img { aspect-ratio: 1.18; object-position: center 52%; }
+.journey-photo--hospital img { aspect-ratio: 1.82; }
+.journey-photo figcaption {
+  margin-top: .8rem;
+  max-width: 54ch;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.55;
+}
 
 .journey-event--first .journey-photo { grid-column: 1 / span 7; }
 .journey-event--first .journey-copy { grid-column: 9 / -1; }
@@ -74,7 +83,8 @@
 .journey-event--second .journey-copy { grid-column: 2 / span 4; }
 .journey-event--second .journey-photo { grid-column: 7 / -1; }
 
-.journey-event--third .journey-copy { grid-column: 2 / span 8; }
+.journey-event--third .journey-copy { grid-column: 1 / span 6; }
+.journey-event--third .journey-photo { grid-column: 8 / -1; }
 .journey-event--fourth .journey-copy { grid-column: 6 / -1; }
 
 .journey-copy { max-width: 580px; }
@@ -225,7 +235,8 @@
   .journey-event--first .journey-copy { grid-column: 8 / -1; }
   .journey-event--second .journey-copy { grid-column: 1 / span 5; }
   .journey-event--second .journey-photo { grid-column: 6 / -1; }
-  .journey-event--third .journey-copy { grid-column: 2 / span 10; }
+  .journey-event--third .journey-copy { grid-column: 1 / span 6; }
+  .journey-event--third .journey-photo { grid-column: 7 / -1; }
   .journey-event--fourth .journey-copy { grid-column: 4 / -1; }
 }
 
@@ -239,6 +250,8 @@
   .journey-event--second .journey-photo { order: 0; }
   .journey-event--second .journey-copy { order: 1; }
   .journey-photo img { aspect-ratio: 1.55; }
+  .journey-photo--garden img { aspect-ratio: 1.18; }
+  .journey-photo--hospital img { aspect-ratio: 1.82; }
   .journey-copy { max-width: none; }
   .journey-year { font-size: 1.75rem; }
   .journey-copy h2 { font-size: clamp(2.55rem, 10vw, 4rem); margin-block: .7rem 1.05rem; }
