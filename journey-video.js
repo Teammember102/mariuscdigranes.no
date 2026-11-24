@@ -7,7 +7,7 @@
 
   frames.forEach((frame) => {
     const video = frame.querySelector("video");
-    const button = frame.querySelector(".journey-video-toggle");
+    const button = frame.querySelector(".journey-video-hitarea");
     const parts = frame.dataset.parts.split(",").map(s => s.trim()).filter(Boolean);
     let inView = false;
     let manuallyPaused = false;
@@ -16,13 +16,11 @@
     let loading = null;
 
     function setLabel(isPlaying) {
-      button.innerHTML = isPlaying ? 'Pause <span aria-hidden="true">Ⅱ</span>' : 'Spill av <span aria-hidden="true">▶</span>';
-      button.setAttribute("aria-label", isPlaying ? "Pause videoen" : "Spill av videoen");
+      button.setAttribute("aria-label", isPlaying ? "Pause Norske Talenter-videoen" : "Spill av Norske Talenter-videoen");
     }
 
     async function ensureLoaded() {
       if (loading) return loading;
-      button.disabled = true;
       loading = Promise.all(parts.map(async (part) => {
         const response = await fetch(part);
         if (!response.ok) throw new Error("Video kunne ikke lastes");
@@ -35,10 +33,9 @@
       }).catch((error) => {
         console.warn("Videoklippet er utilgjengelig. Viser stillbildet.", error);
         frame.classList.add("video-unavailable");
-        button.hidden = true;
+        button.disabled = true;
+        button.setAttribute("aria-label", "Norske Talenter-videoen er ikke tilgjengelig");
         return false;
-      }).finally(() => {
-        button.disabled = false;
       });
       return loading;
     }
