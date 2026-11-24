@@ -216,3 +216,179 @@ img,video { max-width:100%; display:block; }
   .nav-links { justify-content:flex-start; }
   .nav-links a { font-size:.67rem; }
 }
+
+
+/* Forsidekonsept B: stor, typografisk Bergen-identitet.
+   Avgrenset til forsiden, uten å endre andre siders layout. */
+.home-page .site-header {
+  background:#596995;
+  color:var(--white);
+  border-bottom-color:rgba(255,248,232,.23);
+}
+.home-page .site-header .brand,
+.home-page .site-header .nav-links a { color:var(--white); }
+.home-page .site-header .nav-links a:hover { color:#F4EBCF; }
+.home-page .site-header .nav-links .nav-accent {
+  color:var(--white);
+  border-color:rgba(255,248,232,.72);
+}
+.home-page .site-header .nav-links .nav-accent:hover {
+  color:var(--ink);
+  background:var(--white);
+  border-color:var(--white);
+}
+.home-page .site-header .brand-mark img {
+  box-shadow:0 0 0 2px rgba(255,248,232,.66);
+}
+.home-page .hero-bergen {
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  width:100%;
+  min-height:clamp(570px,76svh,820px);
+  padding:clamp(80px,10vw,150px) 0 clamp(105px,12vw,155px);
+  background:#596995;
+  color:var(--white);
+}
+.hero-bergen-inner { position:relative; z-index:2; }
+.home-page .hero-bergen .hero-copy { max-width:none; }
+.home-page .hero-bergen .hero-copy h1 {
+  max-width:none;
+  margin:clamp(22px,4vw,48px) 0 clamp(25px,4.4vw,55px);
+  color:var(--white);
+  font:400 clamp(4.8rem,10.4vw,10.6rem)/.96 var(--serif);
+  letter-spacing:-.075em;
+}
+.home-page .hero-bergen .hero-copy h1 em {
+  color:var(--white);
+  font-weight:400;
+}
+.bergen-kicker {
+  margin:0;
+  font:700 clamp(.67rem,.82vw,.78rem)/1.4 var(--sans);
+  letter-spacing:.19em;
+  text-transform:uppercase;
+  color:rgba(255,248,232,.9);
+}
+.home-page .hero-bergen .hero-links {
+  margin-top:0;
+  gap:1.2rem 2rem;
+}
+.home-page .hero-bergen .button {
+  background:var(--white);
+  color:var(--ink);
+  border-color:var(--white);
+}
+.home-page .hero-bergen .button:hover {
+  background:#E7D39E;
+  border-color:#E7D39E;
+  color:var(--ink);
+}
+.home-page .hero-bergen .text-link {
+  color:var(--white);
+  border-bottom-color:rgba(255,248,232,.7);
+}
+.home-page .hero-bergen .text-link:hover { color:#F4EBCF; }
+.bergen-signature {
+  position:absolute;
+  z-index:2;
+  right:max(38px,calc((100vw - 1240px)/2));
+  bottom:clamp(24px,4vw,50px);
+  color:var(--white);
+  opacity:.9;
+  font:italic clamp(1.1rem,1.75vw,1.75rem)/1.1 var(--serif);
+  letter-spacing:-.02em;
+  transform:rotate(-7deg);
+  pointer-events:none;
+}
+.bergen-rain {
+  position:absolute;
+  z-index:1;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:.78;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.13) 32%,#000 70%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.13) 32%,#000 70%);
+}
+.bergen-drop {
+  position:absolute;
+  top:-140px;
+  left:var(--x);
+  width:1px;
+  height:var(--length);
+  background:linear-gradient(to bottom,transparent,rgba(255,248,232,.64));
+  opacity:var(--alpha);
+  animation:bergen-rain-fall var(--duration) linear var(--delay) infinite;
+}
+@keyframes bergen-rain-fall {
+  from { transform:translate3d(0,-20px,0) rotate(11deg); }
+  to { transform:translate3d(-38px,calc(100svh + 250px),0) rotate(11deg); }
+}
+.cursor-echo {
+  position:fixed;
+  z-index:200;
+  top:0;
+  left:0;
+  width:11px;
+  height:11px;
+  border:1px solid rgba(79,96,139,.66);
+  border-radius:50%;
+  pointer-events:none;
+  animation:cursor-echo-fade .56s ease-out forwards;
+  will-change:opacity,transform;
+}
+.cursor-echo--light { border-color:rgba(255,248,232,.72); }
+@keyframes cursor-echo-fade {
+  from { opacity:.55; transform:translate(-50%,-50%) scale(.35); }
+  to { opacity:0; transform:translate(-50%,-50%) scale(2.05); }
+}
+@media (prefers-reduced-motion:no-preference) {
+  .home-page .hero-bergen .hero-copy {
+    animation:bergen-intro .88s cubic-bezier(.16,1,.3,1) both;
+  }
+  [data-reveal].reveal-prep {
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity .7s ease,transform .8s cubic-bezier(.16,1,.3,1);
+  }
+  [data-reveal].reveal-prep.reveal-show {
+    opacity:1;
+    transform:translateY(0);
+  }
+  .home-page .projects-grid > [data-reveal]:nth-child(2) { transition-delay:.09s; }
+  .home-page .projects-grid > [data-reveal]:nth-child(3) { transition-delay:.04s; }
+  .home-page .projects-grid > [data-reveal]:nth-child(4) { transition-delay:.12s; }
+}
+@keyframes bergen-intro {
+  from {opacity:0;transform:translateY(26px);}
+  to {opacity:1;transform:translateY(0);}
+}
+@media (max-width:920px) {
+  .home-page .hero-bergen { min-height:620px; }
+}
+@media (max-width:680px) {
+  .home-page .hero-bergen {
+    min-height:clamp(530px,75svh,700px);
+    padding:clamp(72px,13vw,112px) 0 115px;
+  }
+  .home-page .hero-bergen .hero-copy h1 {
+    font-size:clamp(3.3rem,11.3vw,6.2rem);
+    line-height:.99;
+    margin:29px 0 34px;
+    overflow-wrap:normal;
+  }
+  .home-page .hero-bergen .hero-links { align-items:flex-start; }
+  .bergen-signature { right:20px;bottom:25px; }
+  .bergen-rain {
+    -webkit-mask-image:linear-gradient(90deg,transparent 5%,rgba(0,0,0,.14) 35%,#000 80%);
+    mask-image:linear-gradient(90deg,transparent 5%,rgba(0,0,0,.14) 35%,#000 80%);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .bergen-drop,.cursor-echo { display:none; animation:none; }
+  .home-page .hero-bergen .hero-copy { animation:none; }
+  [data-reveal].reveal-prep { opacity:1;transform:none;transition:none; }
+}
