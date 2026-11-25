@@ -404,12 +404,49 @@
    the responsive rules above otherwise reset its stacking order to 2. */
 .studio-home .studio-hero .studio-hero-portrait { z-index:5; }
 
-/* Visible but photo-realistic eye catchlight.
-   No star glyph: white reflected highlight + soft photographic halo.
-   The CSS hover trigger also works if JS was cached or did not load. */
+/* Eye animation — calibrated position confirmed from the user's portrait.
+   The tiny textured upper lid sweeps down over the iris, pauses briefly
+   and opens again. The familiar catchlight follows after the blink.
+   Leave these coordinates untouched. */
 .studio-home .studio-hero-portrait {
   --eye-x: 63%;
   --eye-y: 43.7%;
+}
+.studio-home .studio-hero-portrait .studio-eye-wink {
+  position:absolute;
+  z-index:11;
+  left:var(--eye-x);
+  top:var(--eye-y);
+  width:6.3%;
+  height:3.05%;
+  transform:translate(-50%,-50%) rotate(-5deg);
+  border-radius:52% 48% 48% 48% / 55% 55% 45% 45%;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:0;
+  /* A narrow, feathered eye aperture; no star/cartoon graphics. */
+  -webkit-mask-image:radial-gradient(ellipse 68% 66% at 50% 52%, #000 58%, transparent 99%);
+  mask-image:radial-gradient(ellipse 68% 66% at 50% 52%, #000 58%, transparent 99%);
+}
+.studio-home .studio-hero-portrait .studio-eye-wink::before {
+  content:"";
+  position:absolute;
+  inset:-3px -2px;
+  border-radius:0 0 48% 48%;
+  background:linear-gradient(180deg,#8a5142 0%,#b67b64 26%,#dba085 57%,#edb39a 81%,#b9755f 98%);
+  box-shadow:0 1px 1px rgba(67,36,31,.45);
+  transform:translateY(-105%);
+}
+.studio-home .studio-hero-portrait .studio-eye-wink::after {
+  content:"";
+  position:absolute;
+  left:11%;
+  right:11%;
+  bottom:12%;
+  height:1px;
+  border-radius:50%;
+  background:rgba(88,46,41,.5);
+  opacity:0;
 }
 .studio-home .studio-hero-portrait .studio-eye-sparkle {
   position:absolute;
@@ -420,19 +457,34 @@
   width:6px;
   height:4px;
   border-radius:48% 58% 48% 45%;
-  background:radial-gradient(ellipse at 40% 32%, #fff 0%, #fff8e7 55%, rgba(255,247,219,.72) 80%, transparent 100%);
-  box-shadow:0 0 3px 1px rgba(255,255,255,.75), 0 0 9px 3px rgba(255,241,180,.4);
+  background:radial-gradient(ellipse at 40% 32%,#fff 0%,#fff8e7 55%,rgba(255,247,219,.72) 80%,transparent 100%);
+  box-shadow:0 0 3px 1px rgba(255,255,255,.75),0 0 9px 3px rgba(255,241,180,.4);
   opacity:0;
   transform:translate(-50%,-50%) scale(.55);
   pointer-events:none;
 }
-@media (hover:hover) {
-  .studio-home .studio-hero-portrait:hover .studio-eye-sparkle {
-    animation:studio-eye-catchlight 1.05s ease-out both;
-  }
+@media(hover:hover){
+  .studio-home .studio-hero-portrait:hover .studio-eye-wink {animation:studio-wink-visible .42s both;}
+  .studio-home .studio-hero-portrait:hover .studio-eye-wink::before {animation:studio-wink-lid .42s both;}
+  .studio-home .studio-hero-portrait:hover .studio-eye-wink::after {animation:studio-wink-crease .42s both;}
+  .studio-home .studio-hero-portrait:hover .studio-eye-sparkle {animation:studio-eye-catchlight .65s .35s ease-out both;}
 }
-.studio-home .studio-hero-portrait:is(.is-sparkling,:focus-visible,.is-active) .studio-eye-sparkle {
-  animation:studio-eye-catchlight 1.05s ease-out both;
+.studio-home .studio-hero-portrait:is(.is-sparkling,:focus-visible,.is-active) .studio-eye-wink {animation:studio-wink-visible .42s both;}
+.studio-home .studio-hero-portrait:is(.is-sparkling,:focus-visible,.is-active) .studio-eye-wink::before {animation:studio-wink-lid .42s both;}
+.studio-home .studio-hero-portrait:is(.is-sparkling,:focus-visible,.is-active) .studio-eye-wink::after {animation:studio-wink-crease .42s both;}
+.studio-home .studio-hero-portrait:is(.is-sparkling,:focus-visible,.is-active) .studio-eye-sparkle {animation:studio-eye-catchlight .65s .35s ease-out both;}
+@keyframes studio-wink-visible {
+  0%,100% {opacity:0;}
+  9%,79% {opacity:1;}
+}
+@keyframes studio-wink-lid {
+  0%,8% {transform:translateY(-105%);}
+  34%,47% {transform:translateY(0);}
+  78%,100% {transform:translateY(-105%);}
+}
+@keyframes studio-wink-crease {
+  0%,27%,70%,100% {opacity:0;}
+  38%,49% {opacity:.7;}
 }
 @keyframes studio-eye-catchlight {
   0%,8% {opacity:0;transform:translate(-50%,-50%) scale(.5);}
@@ -442,5 +494,8 @@
   100% {opacity:0;transform:translate(-50%,-50%) scale(.55);}
 }
 @media(prefers-reduced-motion:reduce){
+  .studio-home .studio-hero-portrait .studio-eye-wink,
+  .studio-home .studio-hero-portrait .studio-eye-wink::before,
+  .studio-home .studio-hero-portrait .studio-eye-wink::after,
   .studio-home .studio-hero-portrait .studio-eye-sparkle {animation:none !important;}
 }
