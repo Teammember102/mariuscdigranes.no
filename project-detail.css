@@ -31,12 +31,20 @@
   gap:clamp(14px,2.5vw,30px);
   align-items:start;
 }
+.project-shots--phones .project-shot,
+.project-shots--phones .project-shot a {
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
 .project-shots--phones .project-shot img {
+  display:block;
   width:100%;
   height:auto;
-  aspect-ratio:2 / 3;
+  aspect-ratio:auto;
   object-fit:contain;
   object-position:center;
+  background:transparent;
 }
 .project-shots--phones .project-shot figcaption {
   line-height:1.5;
