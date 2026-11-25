@@ -393,3 +393,8 @@
     font-size:clamp(1.55rem,7vw,3.3rem);
   }
 }
+
+
+/* Keep the portrait above the oversized hero lettering at all breakpoints:
+   the responsive rules above otherwise reset its stacking order to 2. */
+.studio-home .studio-hero .studio-hero-portrait { z-index:5; }

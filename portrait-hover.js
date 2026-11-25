@@ -9,7 +9,10 @@
     portrait.setAttribute("aria-expanded", String(open));
   };
   portrait.addEventListener("click", () => {
-    setOpen(!portrait.classList.contains("is-active"));
+    // Only taps should toggle; on desktop the label is a pure hover effect.
+    if (window.matchMedia("(hover: none)").matches) {
+      setOpen(!portrait.classList.contains("is-active"));
+    }
   });
   portrait.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
