@@ -58,8 +58,8 @@
   transform:translate(3px,3px);
   box-shadow:3px 3px 0 var(--poster-ink);
 }
-/* Kjuagutt: a clearly visible, pull-out yellow backing to the original round photo.
-   It is fully hidden at rest and slides right/down only while hovered or focused. */
+/* Kjuagutt — an oval extension of the original round portrait, not a square.
+   The yellow oval reveals only on hover or keyboard focus. */
 .studio-home .studio-hero .studio-hero-portrait {
   isolation:isolate;
   overflow:visible;
@@ -70,54 +70,55 @@
   position:relative;
   z-index:2;
   border:6px solid #FAFAF7;
-  box-shadow:0 24px 48px rgba(9,19,57,.26);
-  overflow:hidden;
   border-radius:50%;
+  overflow:hidden;
+  box-shadow:0 24px 48px rgba(9,19,57,.26);
 }
-/* Full yellow card, offset well beyond the round photo on hover. */
 .studio-home .studio-portrait-backplate {
   position:absolute;
   z-index:1;
-  inset:0;
   display:block;
-  width:100%;
-  height:100%;
-  background:#F6D76B;
+  top:-5%;
+  left:-7.5%;
+  width:115%;
+  height:118%;
+  box-sizing:border-box;
+  border-radius:50%;
   border:2px solid #14171D;
-  border-radius:14px;
-  box-shadow:8px 10px 0 rgba(20,23,29,.45);
+  background:#F6D76B;
+  box-shadow:8px 10px 0 rgba(20,23,29,.52);
   opacity:0;
   visibility:hidden;
-  transform:translate3d(-8px,-8px,0) rotate(-5deg);
-  transform-origin:center;
+  transform:translate3d(0,0,0) scale(.88) rotate(-7deg);
   transition:transform .55s cubic-bezier(.16,1,.3,1),opacity .25s ease,visibility .25s ease;
   pointer-events:none;
 }
-/* A real printed label on that yellow backing, visible beneath the photo. */
 .studio-home .studio-portrait-backplate-text {
   position:absolute;
-  right:14px;
-  bottom:9px;
   display:block;
-  padding:0;
+  left:50%;
+  bottom:14px;
   color:#14171D;
   font:italic 700 clamp(1.25rem,2.4vw,2rem)/1.1 Georgia,'Times New Roman',serif;
   letter-spacing:-.045em;
   white-space:nowrap;
-  transform:rotate(-3deg);
+  transform:translateX(-50%) rotate(-4deg);
 }
 .studio-home .studio-hero-portrait:is(:hover,:focus,:focus-within) .studio-portrait-backplate,
 .studio-home .studio-hero-portrait.is-active .studio-portrait-backplate {
   opacity:1;
   visibility:visible;
-  transform:translate3d(34px,55px,0) rotate(5deg);
+  transform:translate3d(25px,34px,0) scale(1) rotate(3deg);
 }
 @media(max-width:700px){
   .studio-home .studio-hero-portrait:is(:hover,:focus,:focus-within) .studio-portrait-backplate,
   .studio-home .studio-hero-portrait.is-active .studio-portrait-backplate{
-    transform:translate3d(22px,46px,0) rotate(5deg);
+    transform:translate3d(17px,27px,0) scale(1) rotate(3deg);
   }
-  .studio-home .studio-portrait-backplate-text{right:10px;bottom:7px;font-size:clamp(1.2rem,5.5vw,1.7rem);}
+  .studio-home .studio-portrait-backplate-text{
+    bottom:9px;
+    font-size:clamp(1.05rem,5vw,1.5rem);
+  }
 }
 @media(prefers-reduced-motion:reduce){
   .studio-home .studio-portrait-backplate{transition:none;}
