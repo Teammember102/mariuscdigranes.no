@@ -109,13 +109,13 @@ body { overflow-x:clip; }
 .studio-end h2{font-family:var(--sans);font-size:clamp(3rem,8vw,8.3rem);font-weight:840;letter-spacing:-.09em;line-height:1.05;margin:clamp(30px,4vw,65px) 0;}
 .studio-end-link{display:inline-flex;align-items:center;gap:clamp(20px,4vw,80px);font-family:var(--serif);font-size:clamp(1.3rem,3.7vw,3.4rem);text-decoration:none;border-bottom:1px solid var(--studio-ink);padding-bottom:12px;letter-spacing:-.045em;overflow-wrap:anywhere;}
 .studio-footer{background:#2F3850;color:#FFF8E8;}
-.studio-footer-inner{display:grid;grid-template-columns:1fr auto;gap:28px;padding-block:clamp(40px,6vw,75px) 27px;}
+.studio-footer-inner{display:flex;flex-direction:column;gap:34px;padding-block:clamp(34px,4vw,56px) 25px;}
 .studio-footer-word{font-size:clamp(3.5rem,8vw,9rem);font-weight:840;letter-spacing:-.1em;line-height:1;}
 .studio-footer-inner p{font-size:.84rem;letter-spacing:.02em;color:rgba(255,248,232,.72);}
-.studio-footer-links{display:flex;flex-direction:column;gap:17px;align-items:flex-end;padding-top:10px;font-size:.8rem;font-weight:750;letter-spacing:.06em;text-transform:uppercase;}
+.studio-footer-links{display:flex;flex-direction:row;flex-wrap:wrap;gap:clamp(18px,3vw,40px);align-items:center;padding-top:0;font-size:.8rem;font-weight:750;letter-spacing:.06em;text-transform:uppercase;}
 .studio-footer-links a{color:inherit;text-decoration:none;}
 .studio-footer-links a:hover{text-decoration:underline;text-underline-offset:5px;}
-.studio-footer-bottom{grid-column:1/-1;display:flex;justify-content:space-between;border-top:1px solid rgba(255,248,232,.3);padding-top:18px;font-size:.7rem;color:rgba(255,248,232,.7);letter-spacing:.04em;}
+.studio-footer-bottom{display:flex;justify-content:space-between;gap:14px;border-top:1px solid rgba(255,248,232,.3);padding-top:18px;font-size:.7rem;color:rgba(255,248,232,.7);letter-spacing:.04em;}
 .studio-listing-intro{background:var(--studio-sand);padding:clamp(75px,10vw,160px) 0 clamp(65px,8vw,110px);}
 .studio-listing-intro h1{font-size:clamp(4.2rem,11vw,12rem);font-weight:850;letter-spacing:-.1em;line-height:.99;margin:clamp(52px,8vw,115px) 0 27px;}
 .studio-listing-intro p{font-size:clamp(1.05rem,1.5vw,1.3rem);max-width:580px;color:var(--ink-soft);line-height:1.6;}
@@ -180,8 +180,8 @@ body { overflow-x:clip; }
  .studio-step p{margin:0 0 10px;}
  .studio-small-project{grid-template-columns:1fr;gap:10px;}
  .studio-small-project strong{font-size:2.5rem;}
- .studio-footer-inner{grid-template-columns:1fr;}
- .studio-footer-links{align-items:flex-start;flex-direction:row;flex-wrap:wrap;gap:20px;padding:0;}
+
+
  .studio-footer-bottom{gap:13px;flex-direction:column;}
  .studio-listing-intro h1{font-size:clamp(3.65rem,12.4vw,6rem);overflow-wrap:anywhere;}
  .studio-end h2{font-size:clamp(3.2rem,10vw,6rem);}
@@ -231,3 +231,11 @@ body { overflow-x:clip; }
 @media(prefers-reduced-motion:reduce){
   ::view-transition-old(root),::view-transition-new(root){animation-duration:.01ms!important;}
 }
+
+/* Simplified, unnumbered portfolio presentation. */
+.studio-manifest-grid{padding-top:clamp(20px,3vw,42px);}
+.studio-work-heading{padding-top:0;}
+.studio-project-index:empty{display:none;}
+.studio-project-index{justify-content:flex-end;}
+.studio-manifest-aside{padding-top:22px;}
+@media(max-width:700px){.studio-manifest-grid{padding-top:8px;}}
