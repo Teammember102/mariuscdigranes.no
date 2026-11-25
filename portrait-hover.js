@@ -4,22 +4,22 @@
   const portrait = document.querySelector(".studio-home .studio-hero-portrait");
   if (!portrait) return;
 
-  const sparkle = portrait.querySelector(".studio-eye-sparkle");
-  const sparkleOnce = () => {
-    if (!sparkle || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    portrait.classList.remove("is-sparkling");
-    void sparkle.offsetWidth;
-    portrait.classList.add("is-sparkling");
+  const wink = portrait.querySelector(".studio-eye-wink");
+  const winkOnce = () => {
+    if (!wink || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    portrait.classList.remove("is-winking");
+    void wink.offsetWidth;
+    portrait.classList.add("is-winking");
   };
-  if (sparkle) sparkle.addEventListener("animationend", () => portrait.classList.remove("is-sparkling"));
+  if (wink) wink.addEventListener("animationend", () => portrait.classList.remove("is-winking"));
   portrait.addEventListener("pointerenter", (event) => {
-    if (event.pointerType !== "touch") sparkleOnce();
+    if (event.pointerType !== "touch") winkOnce();
   });
-  portrait.addEventListener("focus", sparkleOnce);
+  portrait.addEventListener("focus", winkOnce);
   const setOpen = (open) => {
     portrait.classList.toggle("is-active", open);
     portrait.setAttribute("aria-expanded", String(open));
-    if (open) sparkleOnce();
+    if (open) winkOnce();
   };
   portrait.addEventListener("click", () => {
     // Only taps should toggle; on desktop the label is a pure hover effect.
