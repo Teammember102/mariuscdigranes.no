@@ -408,8 +408,8 @@
    No star glyph: white reflected highlight + soft photographic halo.
    The CSS hover trigger also works if JS was cached or did not load. */
 .studio-home .studio-hero-portrait {
-  --eye-x: 59%;
-  --eye-y: 45%;
+  --eye-x: 63%;
+  --eye-y: 43%;
 }
 .studio-home .studio-hero-portrait .studio-eye-sparkle {
   position:absolute;
