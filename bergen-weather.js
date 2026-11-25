@@ -122,7 +122,7 @@
     if(!Number.isFinite(stamp.getTime()))throw new Error("Ukjent kontrolltid");
     const age=Date.now()-stamp.getTime();
     const dateLabel=fmtDate.format(stamp)===fmtDate.format(new Date())?"":fmtUpdateDate.format(stamp)+" ";
-    status.textContent=(stale||age>90*60000?"ELDRE VARSEL · SIST SJEKKET ":"SIST SJEKKET ")+dateLabel+fmtUpdate.format(stamp);
+    status.textContent="OPPDATERT "+dateLabel+fmtUpdate.format(stamp);
   }
   function showFailure(){
     status.textContent="VARSEL IKKE TILGJENGELIG";
