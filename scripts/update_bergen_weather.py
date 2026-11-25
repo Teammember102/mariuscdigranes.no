@@ -42,7 +42,9 @@ def main():
             cached = {}
     expires = dt_iso(cached.get("sourceExpires"))
     if expires and expires > now and cached.get("hours"):
-        print("Forecast is still fresh until", iso(expires), "— no API request")
+        cached["checkedAt"] = iso(now)
+        OUTPUT.write_text(json.dumps(cached, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print("Forecast still fresh — recorded hourly check at", iso(now))
         return
 
     headers = {
@@ -59,6 +61,7 @@ def main():
     except HTTPError as exc:
         if exc.code == 304 and cached.get("hours"):
             cached["sourceExpires"] = iso(http_expiry(exc.headers, now))
+            cached["checkedAt"] = iso(now)
             OUTPUT.parent.mkdir(parents=True, exist_ok=True)
             OUTPUT.write_text(json.dumps(cached, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             print("Not modified; kept existing MET forecast")
@@ -97,6 +100,7 @@ def main():
         "location": "Bergen, Norway",
         "source": "MET Norway Locationforecast 2.0",
         "updatedAt": iso(now),
+        "checkedAt": iso(now),
         "sourceExpires": iso(source_expires),
         "lastModified": last_modified,
         "hours": hours,
