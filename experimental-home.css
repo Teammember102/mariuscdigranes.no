@@ -408,8 +408,8 @@
    No star glyph: white reflected highlight + soft photographic halo.
    The CSS hover trigger also works if JS was cached or did not load. */
 .studio-home .studio-hero-portrait {
-  --eye-x: 46%;
-  --eye-y: 34%;
+  --eye-x: 59%;
+  --eye-y: 45%;
 }
 .studio-home .studio-hero-portrait .studio-eye-sparkle {
   position:absolute;
@@ -417,8 +417,8 @@
   left:var(--eye-x);
   top:var(--eye-y);
   display:block;
-  width:7px;
-  height:5px;
+  width:6px;
+  height:4px;
   border-radius:48% 58% 48% 45%;
   background:radial-gradient(ellipse at 40% 32%, #fff 0%, #fff8e7 55%, rgba(255,247,219,.72) 80%, transparent 100%);
   box-shadow:0 0 3px 1px rgba(255,255,255,.75), 0 0 9px 3px rgba(255,241,180,.4);
