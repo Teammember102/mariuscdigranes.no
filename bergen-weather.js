@@ -1,6 +1,6 @@
-/* Bergen time-by-time forecast: MET Norway Locationforecast 2.0 / Yr.
-   Simple CORS request on this small personal site, with persistent expiry-aware caching.
-   Custom symbols are designed here rather than embedding Yr's icon assets. */
+/* Bergen time-by-time forecast: same-origin JSON from an hourly MET Norway cache.
+   GitHub Actions supplies an identified User-Agent and honours MET cache policy.
+   Original pictograms are drawn locally; no third-party weather widget. */
 (() => {
   "use strict";
   const viewport=document.getElementById("bergen-weather-viewport");
@@ -9,8 +9,8 @@
   if(!viewport||!track||!status)return;
 
   // Four decimal coordinates per MET's caching requirements.
-  const API="https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=60.3929&lon=5.3241";
-  const KEY="bergen-hourly-met-v1";
+  const API="data/bergen-weather.json";
+  const KEY="bergen-hourly-site-cache-v2";
   const TZ="Europe/Oslo";
   const HOUR=3600000;
   const prefersReduced=window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -40,7 +40,7 @@
     const night=code.includes("_night")||code.includes("polartwilight");
     const svg=(contents)=>'<svg viewBox="0 0 64 68" aria-hidden="true" focusable="false">'+contents+'</svg>';
     if(code.includes("thunder"))return {label:"Torden",svg:svg(CLOUD+THUNDER)};
-    if(code.includes("sleet"))return {label:"Sludd",svg:svg(CLOUD+RAIN.slice(0,RAIN.length-8)+SNOW)};
+    if(code.includes("sleet"))return {label:"Sludd",svg:svg(CLOUD+RAIN+SNOW)};
     if(code.includes("snow"))return {label:"Snø",svg:svg(CLOUD+SNOW)};
     if(code.includes("rain")||code.includes("drizzle"))return {label:"Regn",svg:svg(CLOUD+RAIN)};
     if(code.includes("fog"))return {label:"Tåke",svg:svg(SMALL_CLOUD+FOG)};
@@ -68,17 +68,17 @@
     try{localStorage.setItem(KEY,JSON.stringify(obj));}catch(_){}
   }
   function parseForecast(data){
-    const entries=data?.properties?.timeseries;
-    if(!Array.isArray(entries))throw new Error("Ukjent respons fra vær-API");
+    const entries=data?.hours;
+    if(!Array.isArray(entries))throw new Error("Ukjent respons fra værdatakilden");
     const earliest=Date.now()-HOUR;
     const hours=entries.filter(entry=>{
       const stamp=Date.parse(entry?.time);
-      return Number.isFinite(stamp)&&stamp>=earliest&&entry?.data?.next_1_hours;
+      return Number.isFinite(stamp)&&stamp>=earliest;
     }).slice(0,24).map(entry=>({
       time:entry.time,
-      temperature:Number(entry.data.instant?.details?.air_temperature),
-      rain:Number(entry.data.next_1_hours?.details?.precipitation_amount??0),
-      symbol:String(entry.data.next_1_hours?.summary?.symbol_code||"cloudy")
+      temperature:Number(entry.temperature),
+      rain:Number(entry.rain??0),
+      symbol:String(entry.symbol||"cloudy")
     })).filter(entry=>Number.isFinite(entry.temperature)&&Number.isFinite(entry.rain));
     if(hours.length<8)throw new Error("For få timesvarsel");
     return hours;
@@ -136,16 +136,15 @@
     const controller=new AbortController();
     const timeout=setTimeout(()=>controller.abort(),12000);
     try{
-      const response=await fetch(API,{mode:"cors",cache:"default",signal:controller.signal});
-      if(!response.ok)throw new Error("MET "+response.status);
-      const hours=parseForecast(await response.json());
-      // Respect server expiry when exposed via CORS; conservative fallback otherwise.
-      const expiresHeader=Date.parse(response.headers.get("Expires")||"");
-      const expires=Number.isFinite(expiresHeader)&&expiresHeader>Date.now()
-        ?expiresHeader:Date.now()+50*60000;
+      const response=await fetch(API,{cache:"no-cache",credentials:"same-origin",signal:controller.signal});
+      if(!response.ok)throw new Error("Værfil "+response.status);
+      const payload=await response.json();
+      const hours=parseForecast(payload);
       const now=Date.now();
-      putCache({hours,updatedAt:now,expires});
-      render(hours,now,false);
+      const updatedAt=Date.parse(payload.updatedAt)||now;
+      const expires=now+15*60000; // Cache locally; the hourly GitHub Action updates our same-origin JSON.
+      putCache({hours,updatedAt,expires});
+      render(hours,updatedAt,now-updatedAt>3*HOUR);
     }catch(err){
       if(cached&&cached.hours?.length){
         try{render(cached.hours,cached.updatedAt,true);return;}catch(_){}
