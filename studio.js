@@ -39,7 +39,7 @@
     Object.assign(line.style,{
       position:"fixed",top:"0",left:"0",height:"3px",width:"100%",
       transformOrigin:"left center",transform:"scaleX(0)",
-      background:"#E7D39E",zIndex:"50",pointerEvents:"none"
+      background:"#F6D76B",zIndex:"50",pointerEvents:"none"
     });
     document.body.append(line);
     let scheduled=false;
