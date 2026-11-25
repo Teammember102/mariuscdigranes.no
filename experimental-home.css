@@ -433,7 +433,7 @@
   100%{opacity:0;transform:translate(-50%,-50%) rotate(-5deg) scaleY(.3);}
 }
 .studio-home .studio-hero-portrait.is-winking .studio-eye-wink{
-  animation:studio-photo-wink .37s ease-in-out both;
+  animation:studio-photo-wink .87s ease-in-out both;
 }
 @media(prefers-reduced-motion:reduce){
   .studio-home .studio-hero-portrait.is-winking .studio-eye-wink{animation:none;}
