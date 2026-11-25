@@ -196,6 +196,11 @@
   letter-spacing:-.11em;
   text-transform:uppercase;
 }
+/* Give the narrow uppercase I a little breathing room between E and D. */
+.studio-home .studio-work-heading h2 .studio-work-title-i{
+  display:inline-block;
+  margin-inline:.065em;
+}
 .studio-home .studio-project-list{gap:clamp(58px,6vw,104px);}
 .studio-home .studio-project{
   --case-bg:#E4EAFF;
