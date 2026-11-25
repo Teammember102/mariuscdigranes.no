@@ -191,3 +191,34 @@ body { overflow-x:clip; }
  .studio-ticker-track,.studio-project-media img,.studio-hero-copy,.studio-hero-portrait{animation:none!important;transition:none!important;}
  .studio-reveal,.studio-reveal.studio-before{opacity:1!important;transform:none!important;}
 }
+
+
+/* Subpages belong to the same editorial family without changing their grids. */
+.about-page .journey-heading h1,
+.about-page .display-title,
+.project-intro h1,
+.contact-page .contact-opening .display-title {
+  font-family:var(--sans);
+  font-weight:820;
+  letter-spacing:-.085em;
+}
+.about-page .journey-heading h1 span,
+.project-intro .period,
+.contact-period { color:#596995; }
+.about-page .journey-copy h2 { letter-spacing:-.064em; }
+.project-page .project-facts,
+.about-page .journey-heading,
+.contact-page .contact-socials { border-color:var(--studio-line); }
+.project-page .project-intro>p { max-width:830px; }
+.project-shot img { transition:transform .55s cubic-bezier(.16,1,.3,1),filter .25s; }
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .project-shot:hover img { transform:translateY(-4px); }
+}
+/* Same-origin page transitions in browsers that support them. */
+@view-transition { navigation:auto; }
+@media(prefers-reduced-motion:no-preference){
+  ::view-transition-old(root){animation:studio-page-out .17s ease both;}
+  ::view-transition-new(root){animation:studio-page-in .28s ease-out both;}
+}
+@keyframes studio-page-out { to {opacity:0;filter:blur(2px);} }
+@keyframes studio-page-in {from {opacity:0;transform:translateY(7px);} to {opacity:1;transform:translateY(0);} }
