@@ -409,7 +409,7 @@
    The CSS hover trigger also works if JS was cached or did not load. */
 .studio-home .studio-hero-portrait {
   --eye-x: 63%;
-  --eye-y: 43%;
+  --eye-y: 43.7%;
 }
 .studio-home .studio-hero-portrait .studio-eye-sparkle {
   position:absolute;
