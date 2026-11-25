@@ -35,7 +35,8 @@
 
     const holder = frame.querySelector(".journey-youtube-holder");
     const button = frame.querySelector(".journey-youtube-toggle");
-    if (!holder || !button) return;
+    const soundButton = frame.querySelector(".journey-youtube-sound");
+    if (!holder || !button || !soundButton) return;
 
     let player = null;
     let yt = null;
@@ -44,6 +45,7 @@
     let inView = false;
     let manuallyPaused = false;
     let manuallyStarted = false;
+    let soundEnabled = false;
     let monitor = null;
 
     function setLabel(playing) {
@@ -51,6 +53,25 @@
         ? 'Pause <span aria-hidden="true">Ⅱ</span>'
         : 'Spill av <span aria-hidden="true">▶</span>';
       button.setAttribute("aria-label", playing ? "Pause Drilltroppen-videoen" : "Spill av Drilltroppen-videoen");
+    }
+
+    function setSoundLabel() {
+      soundButton.innerHTML = soundEnabled
+        ? 'Lyd på <span aria-hidden="true">🔊</span>'
+        : 'Lyd av <span aria-hidden="true">🔇</span>';
+      soundButton.setAttribute("aria-label",
+        soundEnabled ? "Slå av lyden i Drilltroppen-videoen" : "Slå på lyden i Drilltroppen-videoen");
+      soundButton.setAttribute("aria-pressed", String(soundEnabled));
+    }
+
+    function syncSound() {
+      if (!player || !ready) return;
+      if (soundEnabled) {
+        player.unMute();
+        player.setVolume(100);
+      } else {
+        player.mute();
+      }
     }
 
     function shouldPlay() {
@@ -80,7 +101,8 @@
 
     function startSegment() {
       if (!player || !ready || !shouldPlay()) return;
-      player.mute();
+      // Preserve the visitor's sound choice when playing again or looping.
+      syncSound();
       // loadVideoById støtter både start- og sluttsekund; brukes også ved løkke.
       player.loadVideoById({ videoId, startSeconds: start, endSeconds: end });
       startMonitor();
@@ -96,6 +118,7 @@
     function showFallback() {
       pause();
       button.hidden = true;
+      soundButton.hidden = true;
       // Bildet som lå her opprinnelig beholdes ved feilmelding.
       const photo = document.createElement("img");
       photo.src = "assets/garden-platinum-2022.jpg";
@@ -127,7 +150,7 @@
           events: {
             onReady: (event) => {
               ready = true;
-              event.target.mute();
+              syncSound();
               if (shouldPlay()) startSegment();
             },
             onStateChange: (event) => {
@@ -135,6 +158,7 @@
               if (event.data === yt.PlayerState.ENDED && shouldPlay()) {
                 startSegment();
               } else if (event.data === yt.PlayerState.PLAYING) {
+                syncSound();
                 startMonitor();
               }
             },
@@ -169,6 +193,13 @@
         manuallyPaused = true;
         pause();
       }
+    });
+
+    soundButton.addEventListener("click", () => {
+      soundEnabled = !soundEnabled;
+      setSoundLabel();
+      // This is initiated by a click, which browsers allow to enable audio.
+      syncSound();
     });
 
     const observer = new IntersectionObserver(([entry]) => {

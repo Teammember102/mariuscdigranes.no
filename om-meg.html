@@ -7,7 +7,7 @@
   <meta name="description" content="Min reise – fra Norske Talenter og Drilltroppen til UX-design, studier i Bergen og utveksling i Utrecht.">
   <title>Min reise | Marius Digranes</title>
   <link rel="stylesheet" href="styles.css?v=palette-03">
-  <link rel="stylesheet" href="about.css?v=palette-03">
+  <link rel="stylesheet" href="about.css?v=drill-sound-01">
 <link rel="stylesheet" href="studio.css?v=palette-03"></head>
 <body class="about-page">
   <a class="skip-link" href="#main">Hopp til innhold</a>
@@ -63,7 +63,10 @@
             </div>
             <div class="journey-youtube-meta">
               <figcaption>Drilltroppen på Basel Tattoo i 2022. <a href="https://www.youtube.com/watch?v=-BxByE7eS5w&t=105s" target="_blank" rel="noopener noreferrer">Se opptaket på YouTube ↗</a></figcaption>
-              <button class="journey-video-toggle journey-youtube-toggle" type="button" aria-label="Spill av Drilltroppen-videoen">Spill av <span aria-hidden="true">▶</span></button>
+              <div class="journey-youtube-controls" role="group" aria-label="Kontroller for Drilltroppen-videoen">
+                <button class="journey-video-toggle journey-youtube-toggle" type="button" aria-label="Spill av Drilltroppen-videoen">Spill av <span aria-hidden="true">▶</span></button>
+                <button class="journey-video-toggle journey-youtube-sound" type="button" aria-label="Slå på lyden i Drilltroppen-videoen" aria-pressed="false">Lyd av <span aria-hidden="true">🔇</span></button>
+              </div>
             </div>
           </figure>
         </li>
@@ -136,7 +139,7 @@
  <div class="studio-footer-bottom"><span>© 2026 Marius Digranes</span><span>Laget med omtanke (og litt regn).</span></div>
 </div></footer>
   <script src="journey-video.js" defer></script>
-  <script src="journey-youtube.js" defer></script>
+  <script src="journey-youtube.js?v=drill-sound-01" defer></script>
   <script src="site-motion.js?v=palette-03" defer></script>
 <script src="studio.js?v=palette-03" defer></script></body>
 </html>
