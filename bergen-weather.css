@@ -25,16 +25,6 @@
   column-gap:clamp(8px,1vw,15px);
   row-gap:5px;
 }
-.bergen-weather-stamp{
-  align-self:center;
-  color:#FAFAF7;
-  background:#023BE6;
-  padding:5px 7px;
-  font:850 .56rem/1 var(--sans);
-  letter-spacing:.08em;
-  transform:rotate(-7deg);
-  white-space:nowrap;
-}
 .bergen-weather-heading h2{
   font:900 clamp(1.35rem,2.3vw,2.15rem)/.95 var(--sans);
   letter-spacing:-.095em;
@@ -172,7 +162,7 @@
 .bergen-weather-error a{color:#023BE6;text-underline-offset:5px;}
 .bergen-weather-footer{
   display:flex;
-  justify-content:space-between;
+  justify-content:flex-end;
   align-items:center;
   gap:22px;
   padding-block:8px 10px;
@@ -194,7 +184,6 @@
   .bergen-weather-header{gap:10px;}
   .bergen-weather-heading{gap:7px 10px;}
   .bergen-weather-heading h2{font-size:clamp(1.35rem,5.5vw,1.75rem);}
-  .bergen-weather-stamp{font-size:.5rem;}
   .bergen-weather-subtitle{width:auto;margin-top:0;font-size:.53rem;}
   .bergen-weather-hour{flex-basis:120px;min-width:120px;height:123px;padding:10px 11px 8px;}
   .bergen-weather-symbol{width:34px;height:35px;}

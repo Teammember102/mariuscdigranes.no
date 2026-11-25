@@ -178,7 +178,7 @@
     const elapsed=Math.min(60,timestamp-(lastFrame||timestamp));
     lastFrame=timestamp;
     if(widthOfSet&&!document.hidden&&!prefersReduced.matches&&!hovered&&!focused&&!pointerActive&&timestamp>pauseUntil){
-      viewport.scrollLeft+=elapsed*.12;
+      viewport.scrollLeft+=elapsed*.085;
       if(viewport.scrollLeft>=widthOfSet)viewport.scrollLeft-=widthOfSet;
     }
     requestAnimationFrame(animate);
