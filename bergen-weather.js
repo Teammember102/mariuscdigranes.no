@@ -17,7 +17,8 @@
   const fmtHour=new Intl.DateTimeFormat("nb-NO",{timeZone:TZ,hour:"2-digit",hourCycle:"h23"});
   const fmtDate=new Intl.DateTimeFormat("sv-SE",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit"});
   const fmtWeekday=new Intl.DateTimeFormat("nb-NO",{timeZone:TZ,weekday:"short"});
-  const fmtUpdate=new Intl.DateTimeFormat("nb-NO",{timeZone:TZ,hour:"2-digit",minute:"2-digit"});
+  const fmtUpdate=new Intl.DateTimeFormat("nb-NO",{timeZone:TZ,hour:"2-digit",minute:"2-digit",hourCycle:"h23"});
+  const fmtUpdateDate=new Intl.DateTimeFormat("nb-NO",{timeZone:TZ,day:"2-digit",month:"2-digit"});
   const fmtRain=new Intl.NumberFormat("nb-NO",{maximumFractionDigits:1});
   const SUN='<circle class="weather-sun" cx="35" cy="21" r="9"/><path class="weather-outline" d="M35 4v5 M35 33v5 M18 21h5 M47 21h5 M23 9l4 4 M43 29l4 4 M47 9l-4 4 M27 29l-4 4"/>';
   const MOON='<path class="weather-cloud" d="M42 8a18 18 0 1 0 15 29A18 18 0 0 1 42 8z"/>';
@@ -112,7 +113,12 @@
     track.replaceChildren(group,duplicate);
     viewport.scrollLeft=0;
     widthOfSet=group.getBoundingClientRect().width;
-    status.textContent=(stale?"ELDRE VARSEL · ":"OPPDATERT ")+fmtUpdate.format(new Date(updatedAt));
+    // Show the actual time the site last retrieved weather data, not page-load time.
+    // A previous-day label includes its date so an old clock time is never misleading.
+    const stamp=new Date(updatedAt);
+    if(!Number.isFinite(stamp.getTime()))throw new Error("Ukjent oppdateringstid");
+    const dateLabel=fmtDate.format(stamp)===fmtDate.format(new Date())?"":fmtUpdateDate.format(stamp)+" ";
+    status.textContent=(stale?"ELDRE VARSEL · ":"OPPDATERT ")+dateLabel+fmtUpdate.format(stamp);
   }
   function showFailure(){
     status.textContent="VARSEL IKKE TILGJENGELIG";
@@ -130,7 +136,7 @@
     if(busy)return;
     const cached=getCache();
     if(cached&&cached.expires>Date.now()&&cached.hours.length){
-      try{render(cached.hours,cached.updatedAt,Date.now()-cached.updatedAt>15*HOUR);return;}catch(_){}
+      try{render(cached.hours,cached.updatedAt,Date.now()-cached.updatedAt>3*HOUR);return;}catch(_){}
     }
     busy=true;
     const controller=new AbortController();
@@ -141,10 +147,11 @@
       const payload=await response.json();
       const hours=parseForecast(payload);
       const now=Date.now();
-      const updatedAt=Date.parse(payload.updatedAt)||now;
-      const expires=now+15*60000; // Cache locally for 15 minutes; GitHub Actions refreshes the data twice daily.
+      const updatedAt=Date.parse(payload.updatedAt);
+      if(!Number.isFinite(updatedAt))throw new Error("Værdata mangler oppdateringstid");
+      const expires=now+5*60000; // Check our small same-origin JSON every 5 minutes to pick up hourly server updates.
       putCache({hours,updatedAt,expires});
-      render(hours,updatedAt,now-updatedAt>15*HOUR);
+      render(hours,updatedAt,now-updatedAt>3*HOUR);
     }catch(err){
       if(cached&&cached.hours?.length){
         try{render(cached.hours,cached.updatedAt,true);return;}catch(_){}
@@ -178,6 +185,6 @@
   }
   if(!prefersReduced.matches)requestAnimationFrame(animate);
   // Re-check after long-lived sessions without hammering MET's API.
-  setInterval(()=>{if(!document.hidden)update();},15*60000);
+  setInterval(()=>{if(!document.hidden)update();},5*60000);
   update();
 })();

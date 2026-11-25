@@ -1,9 +1,9 @@
-name: Refresh Bergen weather twice daily
+name: Refresh Bergen weather hourly
 
 on:
   schedule:
-    # 06:13 and 18:13 UTC; morning and evening in Bergen (CET/CEST).
-    - cron: "13 6,18 * * *"
+    # Request fresh forecast once per hour; GitHub schedules can run a little late.
+    - cron: "13 * * * *"
   workflow_dispatch:
   push:
     paths:
