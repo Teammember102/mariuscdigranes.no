@@ -24,8 +24,34 @@
   transform:rotate(-12deg);
   pointer-events:none;
 }
+/* Two slightly offset print labels instead of another horizontal rule. */
 .studio-home .studio-hero-topline{
-  border-bottom:1px solid rgba(250,250,247,.45);
+  border:0;
+  padding:4px 0 0;
+  align-items:center;
+  gap:16px;
+  color:#14171D;
+}
+.studio-home .studio-hero-topline span{
+  display:inline-block;
+  line-height:1;
+  white-space:nowrap;
+  font-weight:900;
+  letter-spacing:.105em;
+}
+.studio-home .studio-hero-topline span:first-child{
+  padding:12px 14px 11px;
+  color:#023BE6;
+  background:#FAFAF7;
+  transform:rotate(-2deg);
+  box-shadow:4px 4px 0 #14171D;
+}
+.studio-home .studio-hero-topline span:last-child{
+  padding:11px 16px 10px;
+  color:#14171D;
+  background:#F6D76B;
+  transform:rotate(3deg);
+  box-shadow:4px 4px 0 #14171D;
 }
 .studio-home .studio-hero h1 .studio-hero-greeting{
   display:block;
@@ -311,4 +337,36 @@
 @media(prefers-reduced-motion:reduce){
   .studio-home .studio-project{transition:none;}
   .studio-home .studio-hero .studio-hero-portrait{transition:none;}
+}
+
+
+/* Jobbportalen belongs on a single line — give its cover copy more width.
+   Keep the other case studies and their type scale intact. */
+@media(min-width:701px){
+  .studio-home .studio-project:nth-child(3){
+    grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  }
+  .studio-home .studio-project:nth-child(3) .studio-project-intro{
+    padding:clamp(20px,3vw,39px);
+  }
+}
+.studio-home .studio-project:nth-child(3) h3{
+  font-size:clamp(2rem,3.9vw,4.3rem);
+  letter-spacing:-.095em;
+  white-space:nowrap;
+  overflow-wrap:normal;
+}
+@media(max-width:700px){
+  /* Retain Bergen on small screens; both labels stay short and compact. */
+  .studio-home .studio-hero-topline{
+    font-size:.6rem;
+    letter-spacing:.07em;
+    gap:10px;
+  }
+  .studio-home .studio-hero-topline span:last-child{display:inline-block;}
+  .studio-home .studio-hero-topline span:first-child{padding:10px 11px;}
+  .studio-home .studio-hero-topline span:last-child{padding:10px 12px;}
+  .studio-home .studio-project:nth-child(3) h3{
+    font-size:clamp(1.55rem,7vw,3.3rem);
+  }
 }
