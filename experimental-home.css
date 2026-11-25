@@ -408,7 +408,7 @@
    A feathered crop of just the closed eye is revealed for a split second. */
 .studio-home .studio-hero-portrait {
   --eye-x:63%;
-  --eye-y:43.7%;
+  --eye-y:44.1%;
 }
 .studio-home .studio-hero-portrait .studio-eye-wink {
   position:absolute;
@@ -433,7 +433,7 @@
   100%{opacity:0;transform:translate(-50%,-50%) rotate(-7.5deg) scaleY(.3);}
 }
 .studio-home .studio-hero-portrait.is-winking .studio-eye-wink{
-  animation:studio-photo-wink .67s ease-in-out both;
+  animation:studio-photo-wink .55s ease-in-out both;
 }
 @media(prefers-reduced-motion:reduce){
   .studio-home .studio-hero-portrait.is-winking .studio-eye-wink{animation:none;}
