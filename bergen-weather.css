@@ -11,12 +11,12 @@
   overflow:hidden;
 }
 .bergen-weather-header{
-  min-height:66px;
+  min-height:50px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:14px;
-  padding-block:11px 10px;
+  padding-block:6px 5px;
 }
 .bergen-weather-heading{
   display:flex;
@@ -153,7 +153,7 @@
 .bergen-weather-footer a{color:inherit;text-underline-offset:3px;}
 .bergen-weather-footer a:hover{color:#023BE6;}
 @media(max-width:900px){
-  .bergen-weather-header{align-items:center;flex-direction:row;flex-wrap:wrap;gap:12px;padding-block:12px;}
+  .bergen-weather-header{align-items:center;flex-direction:row;flex-wrap:wrap;gap:9px;padding-block:7px;}
   .bergen-weather-toolbar{width:auto;justify-content:flex-end;margin-left:auto;}
   .bergen-weather-status{text-align:left;max-width:none;}
 }
