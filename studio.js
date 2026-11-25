@@ -7,7 +7,7 @@
   // Animate only content that is about to enter the viewport.
   const revealEls=[
     ...document.querySelectorAll(".studio-reveal"),
-    ...document.querySelectorAll(".project-shot, .cv-block, .contact-socials")
+    ...document.querySelectorAll(".project-intro, .project-shot, .cv-block, .contact-opening, .contact-socials, .journey-event .journey-copy, .gallery-grid figure")
   ];
   if ("IntersectionObserver" in window) {
     const io=new IntersectionObserver((entries,observer)=>{
