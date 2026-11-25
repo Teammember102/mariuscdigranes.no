@@ -404,8 +404,8 @@
    the responsive rules above otherwise reset its stacking order to 2. */
 .studio-home .studio-hero .studio-hero-portrait { z-index:5; }
 
-/* Brief human wink: no sparkle, star, or artificial glow.
-   Coordinates calibrated against the actual portrait screenshot. */
+/* Original portrait.jpg remains the only full photograph.
+   A feathered crop of just the closed eye is revealed for a split second. */
 .studio-home .studio-hero-portrait {
   --eye-x:63%;
   --eye-y:43.7%;
@@ -415,26 +415,26 @@
   z-index:11;
   left:var(--eye-x);
   top:var(--eye-y);
-  width:7.8%;
-  height:auto;
-  overflow:visible;
-  opacity:0;
-  transform:translate(-50%,-50%) rotate(-5deg) scaleY(.3);
+  width:10.5%;
+  aspect-ratio:108 / 53;
+  background-image:url("data:image/webp;base64,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");
+  background-size:100% 100%;
+  background-repeat:no-repeat;
   pointer-events:none;
-  user-select:none;
-  will-change:opacity,transform;
+  opacity:0;
+  transform:translate(-50%,-50%) rotate(-5deg) scaleY(.4);
+  transform-origin:50% 50%;
 }
-/* Half-open -> closed -> open; single wink only when triggered, not looping. */
-@keyframes studio-natural-wink {
-  0%,8% {opacity:0;transform:translate(-50%,-50%) rotate(-5deg) scaleY(.28);}
-  32% {opacity:.7;transform:translate(-50%,-50%) rotate(-5deg) scaleY(.7);}
-  45%,55% {opacity:1;transform:translate(-50%,-50%) rotate(-5deg) scaleY(1);}
-  80% {opacity:.25;transform:translate(-50%,-50%) rotate(-5deg) scaleY(.48);}
-  100% {opacity:0;transform:translate(-50%,-50%) rotate(-5deg) scaleY(.28);}
+@keyframes studio-photo-wink {
+  0%,12%{opacity:0;transform:translate(-50%,-50%) rotate(-5deg) scaleY(.3);}
+  32%{opacity:.86;transform:translate(-50%,-50%) rotate(-5deg) scaleY(.8);}
+  46%,58%{opacity:1;transform:translate(-50%,-50%) rotate(-5deg) scaleY(1);}
+  81%{opacity:.3;transform:translate(-50%,-50%) rotate(-5deg) scaleY(.7);}
+  100%{opacity:0;transform:translate(-50%,-50%) rotate(-5deg) scaleY(.3);}
 }
-.studio-home .studio-hero-portrait.is-winking .studio-eye-wink {
-  animation:studio-natural-wink .36s cubic-bezier(.35,0,.35,1) both;
+.studio-home .studio-hero-portrait.is-winking .studio-eye-wink{
+  animation:studio-photo-wink .37s ease-in-out both;
 }
 @media(prefers-reduced-motion:reduce){
-  .studio-home .studio-hero-portrait.is-sparkling .studio-eye-wink {animation:none;}
+  .studio-home .studio-hero-portrait.is-winking .studio-eye-wink{animation:none;}
 }
