@@ -422,15 +422,15 @@
   background-repeat:no-repeat;
   pointer-events:none;
   opacity:0;
-  transform:translate(-50%,-50%) rotate(-3deg) scaleY(.4);
+  transform:translate(-50%,-50%) rotate(-6deg) scaleY(.4);
   transform-origin:50% 50%;
 }
 @keyframes studio-photo-wink {
-  0%,12%{opacity:0;transform:translate(-50%,-50%) rotate(-3deg) scaleY(.3);}
-  32%{opacity:.86;transform:translate(-50%,-50%) rotate(-3deg) scaleY(.8);}
-  46%,58%{opacity:1;transform:translate(-50%,-50%) rotate(-3deg) scaleY(1);}
-  81%{opacity:.3;transform:translate(-50%,-50%) rotate(-3deg) scaleY(.7);}
-  100%{opacity:0;transform:translate(-50%,-50%) rotate(-3deg) scaleY(.3);}
+  0%,12%{opacity:0;transform:translate(-50%,-50%) rotate(-6deg) scaleY(.3);}
+  32%{opacity:.86;transform:translate(-50%,-50%) rotate(-6deg) scaleY(.8);}
+  46%,58%{opacity:1;transform:translate(-50%,-50%) rotate(-6deg) scaleY(1);}
+  81%{opacity:.3;transform:translate(-50%,-50%) rotate(-6deg) scaleY(.7);}
+  100%{opacity:0;transform:translate(-50%,-50%) rotate(-6deg) scaleY(.3);}
 }
 .studio-home .studio-hero-portrait.is-winking .studio-eye-wink{
   animation:studio-photo-wink .67s ease-in-out both;
