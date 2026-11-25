@@ -10,7 +10,10 @@
 
   // Four decimal coordinates per MET's caching requirements.
   const API="data/bergen-weather.json";
-  const KEY="bergen-hourly-site-cache-v2";
+  // A fresh fallback when the GitHub Pages CDN is still serving an older deploy.
+  // This is the same file from the public repository, not an extra MET request.
+  const SOURCE_BACKUP="https://raw.githubusercontent.com/Teammember102/mariuscdigranes.no/main/data/bergen-weather.json";
+  const KEY="bergen-hourly-site-cache-v3";
   const TZ="Europe/Oslo";
   const HOUR=3600000;
   const prefersReduced=window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -132,31 +135,58 @@
     paragraph.append(link);
     track.replaceChildren(paragraph);
   }
+  async function readSnapshot(url,signal){
+    // no-store plus a short cache buster prevents the browser/CDN returning
+    // yesterday's JSON under an otherwise correct "OPPDATERT" label.
+    const separator=url.includes("?")?"&":"?";
+    const response=await fetch(url+separator+"weather_ver="+Math.floor(Date.now()/300000),{
+      cache:"no-store",credentials:url===API?"same-origin":"omit",signal
+    });
+    if(!response.ok)throw new Error("Værdata "+response.status);
+    const payload=await response.json();
+    const updatedAt=Date.parse(payload.updatedAt);
+    if(!Number.isFinite(updatedAt))throw new Error("Værdata mangler oppdateringstid");
+    const hours=parseForecast(payload);
+    return {hours,updatedAt};
+  }
   async function update(){
     if(busy)return;
     const cached=getCache();
-    if(cached&&cached.expires>Date.now()&&cached.hours.length){
-      try{render(cached.hours,cached.updatedAt,Date.now()-cached.updatedAt>3*HOUR);return;}catch(_){}
+    if(cached&&cached.hours.length){
+      // Display cached weather while the latest snapshot loads, then replace it.
+      try{render(cached.hours,cached.updatedAt,Date.now()-cached.updatedAt>3*HOUR);}catch(_){}
     }
     busy=true;
     const controller=new AbortController();
     const timeout=setTimeout(()=>controller.abort(),12000);
     try{
-      const response=await fetch(API,{cache:"no-cache",credentials:"same-origin",signal:controller.signal});
-      if(!response.ok)throw new Error("Værfil "+response.status);
-      const payload=await response.json();
-      const hours=parseForecast(payload);
-      const now=Date.now();
-      const updatedAt=Date.parse(payload.updatedAt);
-      if(!Number.isFinite(updatedAt))throw new Error("Værdata mangler oppdateringstid");
-      const expires=now+5*60000; // Check our small same-origin JSON every 5 minutes to pick up hourly server updates.
-      putCache({hours,updatedAt,expires});
-      render(hours,updatedAt,now-updatedAt>3*HOUR);
-    }catch(err){
-      if(cached&&cached.hours?.length){
-        try{render(cached.hours,cached.updatedAt,true);return;}catch(_){}
+      let snapshot;
+      try {
+        snapshot=await readSnapshot(API,controller.signal);
+      } catch(_) {
+        snapshot=await readSnapshot(SOURCE_BACKUP,controller.signal);
       }
-      showFailure();
+      // Pages may lag behind the GitHub repository by one or more deployments.
+      if(Date.now()-snapshot.updatedAt>90*60000){
+        try{
+          const latest=await readSnapshot(SOURCE_BACKUP,controller.signal);
+          if(latest.updatedAt>snapshot.updatedAt)snapshot=latest;
+        }catch(_){}
+      }
+      if(cached&&cached.updatedAt>snapshot.updatedAt){
+        try{
+          if(cached.hours.filter(row=>Date.parse(row.time)>=Date.now()-HOUR).length>=8){
+            snapshot={hours:cached.hours,updatedAt:cached.updatedAt};
+          }
+        }catch(_){}
+      }
+      putCache({...snapshot,expires:Date.now()+5*60000});
+      render(snapshot.hours,snapshot.updatedAt,Date.now()-snapshot.updatedAt>3*HOUR);
+    }catch(_){
+      if(!cached||!cached.hours.length)showFailure();
+      else{
+        try{render(cached.hours,cached.updatedAt,true);}catch(_){showFailure();}
+      }
     }finally{
       clearTimeout(timeout);
       busy=false;
@@ -186,5 +216,8 @@
   if(!prefersReduced.matches)requestAnimationFrame(animate);
   // Re-check after long-lived sessions without hammering MET's API.
   setInterval(()=>{if(!document.hidden)update();},5*60000);
+  document.addEventListener("visibilitychange",()=>{
+    if(!document.hidden)update();
+  });
   update();
 })();
