@@ -158,13 +158,6 @@
   function pauseForInteraction(){
     pauseUntil=performance.now()+6500;
   }
-  function slide(direction){
-    if(!widthOfSet)return;
-    pauseForInteraction();
-    viewport.scrollBy({left:direction*Math.min(viewport.clientWidth*.78,520),behavior:prefersReduced.matches?"instant":"smooth"});
-  }
-  document.querySelector("[data-weather-prev]")?.addEventListener("click",()=>slide(-1));
-  document.querySelector("[data-weather-next]")?.addEventListener("click",()=>slide(1));
   viewport.addEventListener("mouseenter",()=>{hovered=true;});
   viewport.addEventListener("mouseleave",()=>{hovered=false;pauseUntil=0;focused=viewport.matches(":focus-visible");});
   viewport.addEventListener("focusin",()=>{focused=viewport.matches(":focus-visible");});
