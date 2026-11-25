@@ -80,13 +80,13 @@ body { overflow-x:clip; }
 .studio-phone-stack img:nth-child(2){transform:rotate(6deg) translateY(-8px);}
 .studio-project:hover .studio-phone-stack img{transform:rotate(-2deg) translateY(-3px);}
 .studio-project:hover .studio-phone-stack img:nth-child(2){transform:rotate(3deg) translateY(-10px);}
-.studio-project-media--jobb{background:#023BE6;}
+.studio-project-media--jobb{background:#EDE3D4;}
 .studio-project-media--jobb>img{box-shadow:14px 18px 34px rgba(24,36,62,.3);width:95%;max-height:430px;object-fit:contain;transform:rotate(2deg);}
 .studio-project:hover .studio-project-media--jobb>img{transform:rotate(0) scale(1.035);}
 .studio-media-note{position:absolute;top:20px;left:23px;font-size:.64rem;font-weight:800;letter-spacing:.11em;z-index:2;color:var(--studio-ink);}
-.studio-project-media--jobb .studio-media-note{color:var(--studio-cream);}
+.studio-project-media--jobb .studio-media-note{color:var(--studio-ink);}
 .studio-media-corner{position:absolute;right:23px;bottom:17px;color:var(--studio-ink);font-size:1.45rem;font-weight:500;}
-.studio-project-media--jobb .studio-media-corner{color:var(--studio-cream);}
+.studio-project-media--jobb .studio-media-corner{color:var(--studio-ink);}
 .studio-small-project{display:grid;grid-template-columns:95px minmax(0,1fr) minmax(140px,1fr) auto;align-items:center;column-gap:20px;border-top:1px solid var(--studio-line);border-bottom:1px solid var(--studio-line);padding:32px 0;}
 .studio-small-project span{font-size:.73rem;letter-spacing:.035em;color:var(--muted);}
 .studio-small-project strong{font-family:var(--serif);font-size:clamp(1.9rem,3vw,3.2rem);font-weight:400;letter-spacing:-.045em;}
@@ -278,5 +278,5 @@ body { overflow-x:clip; }
 .studio-home .studio-hero .studio-hero-serial{color:#F6D76B;}
 .studio-project-media--skred{background:#F6D76B;}
 .studio-project-media--snap{background:#E4EAFF;}
-.studio-project-media--jobb{background:#023BE6;}
+.studio-project-media--jobb{background:#EDE3D4;}
 .studio-home .studio-hero a:focus-visible{outline-color:#F6D76B;}
