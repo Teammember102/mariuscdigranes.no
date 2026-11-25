@@ -403,3 +403,36 @@
 /* Keep the portrait above the oversized hero lettering at all breakpoints:
    the responsive rules above otherwise reset its stacking order to 2. */
 .studio-home .studio-hero .studio-hero-portrait { z-index:5; }
+
+/* Brief playful glint over the portrait, synchronized with the Kjuagutt reveal. */
+.studio-home .studio-hero-portrait .studio-eye-sparkle {
+  position:absolute;
+  z-index:4;
+  left:53%;
+  top:38%;
+  display:grid;
+  place-items:center;
+  width:1em;
+  height:1em;
+  color:#fff7bd;
+  font-size:clamp(22px,3vw,35px);
+  line-height:1;
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.15) rotate(-32deg);
+  text-shadow:0 0 3px #fff,0 0 12px rgba(246,215,107,.9),0 2px 1px rgba(0,0,0,.3);
+  pointer-events:none;
+  user-select:none;
+}
+.studio-home .studio-hero-portrait.is-sparkling .studio-eye-sparkle {
+  animation:studio-eye-twinkle .7s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes studio-eye-twinkle {
+  0%,8% { opacity:0;transform:translate(-50%,-50%) scale(.1) rotate(-35deg); }
+  25% { opacity:1;transform:translate(-50%,-50%) scale(1.25) rotate(8deg); }
+  43% { opacity:.2;transform:translate(-50%,-50%) scale(.4) rotate(20deg); }
+  60% { opacity:1;transform:translate(-50%,-50%) scale(.95) rotate(46deg); }
+  100% { opacity:0;transform:translate(-50%,-50%) scale(.15) rotate(75deg); }
+}
+@media(prefers-reduced-motion:reduce){
+  .studio-home .studio-hero-portrait.is-sparkling .studio-eye-sparkle {animation:none;}
+}
