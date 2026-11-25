@@ -439,8 +439,11 @@
     margin-left:auto;
     margin-right:0;
   }
+  .studio-home .studio-project:nth-child(1) h3{
+    font-size:clamp(2.8rem,4.35vw,5.4rem);
+  }
   .studio-home .studio-project:nth-child(2) h3{
-    font-size:clamp(2.7rem,4.3vw,5.3rem);
+    font-size:clamp(2.3rem,3.2vw,3.1rem);
   }
 }
 /* So the Skredvett heading and its image both still breathe on mid-sized screens. */
