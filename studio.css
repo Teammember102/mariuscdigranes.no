@@ -322,9 +322,9 @@ body { overflow-x:clip; }
 .studio-home .hero-runner-arm { transform-origin:23px 20.5px; }
 .studio-home .hero-runner-leg { transform-origin:20.5px 32.5px; }
 .studio-home .hero-runner-arm--front { animation:hero-run-arm .52s ease-in-out infinite alternate; }
-.studio-home .hero-runner-arm--back { animation:hero-run-arm .52s ease-in-out -.52s infinite alternate-reverse; }
+.studio-home .hero-runner-arm--back { animation:hero-run-arm .52s ease-in-out infinite alternate-reverse; }
 .studio-home .hero-runner-leg--front { animation:hero-run-leg .52s ease-in-out infinite alternate; }
-.studio-home .hero-runner-leg--back { animation:hero-run-leg .52s ease-in-out -.52s infinite alternate-reverse; }
+.studio-home .hero-runner-leg--back { animation:hero-run-leg .52s ease-in-out infinite alternate-reverse; }
 @keyframes hero-run-across {
   from { transform:translate3d(-58px,0,0); }
   to { transform:translate3d(calc(100% + 58px),0,0); }
