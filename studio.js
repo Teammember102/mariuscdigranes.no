@@ -44,15 +44,20 @@
       <span class="studio-reading-progress-runner">
         <svg viewBox="0 0 54 58" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
           <g class="runner-bounce" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="26" cy="8.5" r="5.6"/>
-            <path d="M24 16 L20.5 32.5"/>
-            <path class="runner-arm runner-arm--front" d="M23 20.5 L31 25.5 L37 22"/>
-            <path class="runner-arm runner-arm--back" d="M23 20.5 L15.5 27 L11.5 23"/>
-            <g class="runner-leg runner-leg--back">
-              <path d="M20.5 32.5 L20.5 43.5 L24.5 52 L29.5 52"/>
+            <!-- Side view facing right. The far arm drives forward as the near knee rises. -->
+            <g class="runner-arm runner-arm--back" opacity=".68">
+              <path d="M23 20.5 L25 31 L34 25"/>
             </g>
+            <g class="runner-leg runner-leg--back" opacity=".75">
+              <path d="M20.5 32.5 L20.5 45.5 L25.5 52 L29 52"/>
+            </g>
+            <path d="M24 16 L20.5 32.5"/>
+            <circle cx="26" cy="8.5" r="5.6"/>
             <g class="runner-leg runner-leg--front">
-              <path d="M20.5 32.5 L20.5 43.5 L24.5 52 L29.5 52"/>
+              <path d="M20.5 32.5 L20.5 45.5 L25.5 52 L29 52"/>
+            </g>
+            <g class="runner-arm runner-arm--front">
+              <path d="M23 20.5 L25 31 L34 25"/>
             </g>
           </g>
         </svg>

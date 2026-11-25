@@ -314,18 +314,32 @@ body { overflow-x:clip; }
 .studio-reading-progress-runner .runner-leg{transform-box:view-box;}
 .studio-reading-progress-runner .runner-arm{transform-origin:23px 20.5px;}
 .studio-reading-progress-runner .runner-leg{transform-origin:20.5px 32.5px;}
-/* Distinct forward and trailing legs even when the page is not moving. */
-.studio-reading-progress-runner .runner-leg--front{transform:rotate(-48deg);}
+/* Side-on running: elbows stay bent, one fist rises while the opposite knee drives forward.
+   Pairs are 180 degrees out of phase, like a real runner. */
+.studio-reading-progress-runner .runner-arm--front{transform:rotate(52deg);}
+.studio-reading-progress-runner .runner-arm--back{transform:rotate(-56deg);}
+.studio-reading-progress-runner .runner-leg--front{transform:rotate(-52deg);}
 .studio-reading-progress-runner .runner-leg--back{transform:rotate(48deg);}
 .studio-reading-progress-wrap.is-scrolling .runner-bounce{animation:studio-run-bounce .28s ease-in-out infinite alternate;}
-.studio-reading-progress-wrap.is-scrolling .runner-arm--front{animation:studio-run-arm .56s ease-in-out infinite alternate;}
-.studio-reading-progress-wrap.is-scrolling .runner-arm--back{animation:studio-run-arm .56s ease-in-out infinite alternate-reverse;}
+.studio-reading-progress-wrap.is-scrolling .runner-arm--front{animation:studio-run-arm-front .56s ease-in-out infinite;}
+.studio-reading-progress-wrap.is-scrolling .runner-arm--back{animation:studio-run-arm-back .56s ease-in-out infinite;}
 .studio-reading-progress-wrap.is-scrolling .runner-leg--front{animation:studio-run-stride-front .56s ease-in-out infinite;}
 .studio-reading-progress-wrap.is-scrolling .runner-leg--back{animation:studio-run-stride-back .56s ease-in-out infinite;}
 @keyframes studio-run-bounce{from{transform:translateY(0)}to{transform:translateY(-2.5px)}}
-@keyframes studio-run-arm{from{transform:rotate(-38deg)}to{transform:rotate(38deg)}}
+@keyframes studio-run-arm-front{
+  0%,100%{transform:rotate(52deg);}
+  25%{transform:rotate(0deg);}
+  50%{transform:rotate(-56deg);}
+  75%{transform:rotate(0deg);}
+}
+@keyframes studio-run-arm-back{
+  0%,100%{transform:rotate(-56deg);}
+  25%{transform:rotate(0deg);}
+  50%{transform:rotate(52deg);}
+  75%{transform:rotate(0deg);}
+}
 @keyframes studio-run-stride-front{
-  0%,100%{transform:rotate(-48deg);}
+  0%,100%{transform:rotate(-52deg);}
   25%{transform:rotate(-23deg);}
   50%{transform:rotate(48deg);}
   75%{transform:rotate(23deg);}
@@ -333,7 +347,7 @@ body { overflow-x:clip; }
 @keyframes studio-run-stride-back{
   0%,100%{transform:rotate(48deg);}
   25%{transform:rotate(23deg);}
-  50%{transform:rotate(-48deg);}
+  50%{transform:rotate(-52deg);}
   75%{transform:rotate(-23deg);}
 }
 @media(max-width:700px){
