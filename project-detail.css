@@ -25,3 +25,29 @@
  .project-award{grid-template-columns:1fr}
  .project-award img{max-width:440px}
 }
+/* Skredvett: telefonprototyper vises fullt ut uten beskjæring. */
+.project-shots--phones {
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(14px,2.5vw,30px);
+  align-items:start;
+}
+.project-shots--phones .project-shot img {
+  width:100%;
+  height:auto;
+  aspect-ratio:2 / 3;
+  object-fit:contain;
+  object-position:center;
+}
+.project-shots--phones .project-shot figcaption {
+  line-height:1.5;
+  text-align:center;
+  padding-top:.75rem;
+}
+@media(max-width:900px){
+  .project-shots--phones { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .project-shots--phones .project-shot { max-width:330px; margin-inline:auto; }
+}
+@media(max-width:540px){
+  .project-shots--phones { grid-template-columns:1fr; gap:2rem; }
+  .project-shots--phones .project-shot { width:min(100%,315px); }
+}
