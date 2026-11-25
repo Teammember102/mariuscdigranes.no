@@ -1,0 +1,91 @@
+/* Temporarily unavailable projects: editorial, keyboard-friendly dialog. */
+.project-coming-soon {
+  box-sizing:border-box;
+  position:fixed;
+  inset:0;
+  width:min(90vw,540px);
+  max-width:540px;
+  max-height:calc(100dvh - 48px);
+  overflow-y:auto;
+  margin:auto;
+  padding:0;
+  border:3px solid #14171D;
+  border-radius:0;
+  background:#FAFAF7;
+  color:#14171D;
+  box-shadow:12px 12px 0 #F6D76B;
+}
+.project-coming-soon::backdrop {
+  background:rgba(9,18,54,.74);
+  backdrop-filter:blur(4px);
+}
+.project-coming-soon-inner {
+  padding:clamp(24px,4.5vw,48px);
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.project-coming-soon-label {
+  display:inline-block;
+  padding:7px 10px;
+  border:2px solid #14171D;
+  background:#F6D76B;
+  font-size:.72rem;
+  font-weight:850;
+  letter-spacing:.08em;
+  transform:rotate(-3deg);
+}
+.project-coming-soon h2 {
+  margin:32px 0 20px;
+  font-family:var(--sans,Arial,sans-serif);
+  font-size:clamp(3.4rem,9vw,6.4rem);
+  line-height:.88;
+  letter-spacing:-.085em;
+  font-weight:900;
+  color:#023BE6;
+}
+.project-coming-soon h2 em {
+  font-family:Georgia,'Times New Roman',serif;
+  font-weight:400;
+  font-style:italic;
+}
+.project-coming-soon p {
+  font-size:clamp(.96rem,2vw,1.08rem);
+  line-height:1.65;
+  max-width:34ch;
+  margin:4px 0 29px;
+}
+.project-coming-soon-name { font-weight:850; }
+.project-coming-soon-close {
+  display:inline-flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  padding:13px 16px;
+  background:#F6D76B;
+  color:#14171D;
+  border:2px solid #14171D;
+  border-radius:0;
+  box-shadow:5px 5px 0 #14171D;
+  cursor:pointer;
+  font-family:var(--sans,Arial,sans-serif);
+  font-weight:850;
+  font-size:.79rem;
+  letter-spacing:.03em;
+  transition:transform .2s,box-shadow .2s;
+}
+.project-coming-soon-close:hover {
+  transform:translate(3px,3px);
+  box-shadow:2px 2px 0 #14171D;
+}
+.project-coming-soon-close:focus-visible {
+  outline:3px solid #023BE6;
+  outline-offset:5px;
+}
+@media(max-width:550px) {
+  .project-coming-soon { width:calc(100vw - 36px);max-height:calc(100dvh - 36px);box-shadow:6px 6px 0 #F6D76B; }
+  .project-coming-soon h2 { margin-top:25px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .project-coming-soon-close { transition:none; }
+}
