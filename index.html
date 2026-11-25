@@ -11,7 +11,7 @@
  <title>Marius Digranes – UX & interaksjonsdesign</title>
  <link rel="stylesheet" href="styles.css?v=palette-03">
  <link rel="stylesheet" href="studio.css?v=portrait-07">
- <link rel="stylesheet" href="experimental-home.css?v=portrait-wink-01">
+ <link rel="stylesheet" href="experimental-home.css?v=natural-wink-02">
  <link rel="stylesheet" href="bergen-weather.css?v=bergen-header-06">
  <link rel="stylesheet" href="project-gate.css?v=coming-soon-01">
 </head>
@@ -50,8 +50,19 @@
       </span>
       <div class="hero-portrait-frame">
        <img src="assets/portrait.jpg" width="1536" height="2048" alt="Marius med blått skjerf ved en kanal i Amsterdam" fetchpriority="high" decoding="async">
-       <span class="studio-eye-wink" aria-hidden="true"></span>
-       <span class="studio-eye-sparkle" aria-hidden="true"></span>
+       <svg class="studio-eye-wink" viewBox="0 0 100 50" aria-hidden="true" focusable="false">
+        <defs>
+         <radialGradient id="wink-skin" cx="50%" cy="50%" rx="53%" ry="53%">
+          <stop offset="0%" stop-color="#c78e76"/>
+          <stop offset="64%" stop-color="#ca927c" stop-opacity=".98"/>
+          <stop offset="85%" stop-color="#c98e79" stop-opacity=".67"/>
+          <stop offset="100%" stop-color="#c98e79" stop-opacity="0"/>
+         </radialGradient>
+        </defs>
+        <ellipse cx="50" cy="25" rx="49" ry="24" fill="url(#wink-skin)"/>
+        <path d="M 17 25 Q 45 36 80 23" fill="none" stroke="#603a34" stroke-width="2.4" stroke-linecap="round" opacity=".88"/>
+        <path d="M 22 28 Q 46 39 76 27" fill="none" stroke="#b97665" stroke-width="1.5" stroke-linecap="round" opacity=".7"/>
+       </svg>
       </div>
      </figure>
     </div>
@@ -160,7 +171,7 @@
 </div></footer>
  <script src="site-motion.js?v=palette-03" defer></script>
  <script src="studio.js?v=runner-form-06" defer></script>
- <script src="portrait-hover.js?v=portrait-sparkle-01" defer></script>
+ <script src="portrait-hover.js?v=natural-wink-02" defer></script>
  <script src="bergen-weather.js?v=bergen-fresh-08" defer></script>
  <script src="project-gate.js?v=coming-soon-01" defer></script>
 </body>
