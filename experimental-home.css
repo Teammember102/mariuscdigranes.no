@@ -404,36 +404,43 @@
    the responsive rules above otherwise reset its stacking order to 2. */
 .studio-home .studio-hero .studio-hero-portrait { z-index:5; }
 
-/* Natural catchlight: a pinpoint reflection rather than a decorative star.
-   Coordinates are percentages of the circular portrait crop; adjust eye-x/eye-y if the source image changes. */
+/* Visible but photo-realistic eye catchlight.
+   No star glyph: white reflected highlight + soft photographic halo.
+   The CSS hover trigger also works if JS was cached or did not load. */
 .studio-home .studio-hero-portrait {
   --eye-x: 46%;
   --eye-y: 34%;
 }
 .studio-home .studio-hero-portrait .studio-eye-sparkle {
   position:absolute;
-  z-index:4;
+  z-index:10;
   left:var(--eye-x);
   top:var(--eye-y);
-  width:3px;
-  height:2.5px;
-  border-radius:50%;
-  background:rgba(255,252,241,.96);
-  box-shadow:0 0 2px 1px rgba(255,249,222,.34);
+  display:block;
+  width:7px;
+  height:5px;
+  border-radius:48% 58% 48% 45%;
+  background:radial-gradient(ellipse at 40% 32%, #fff 0%, #fff8e7 55%, rgba(255,247,219,.72) 80%, transparent 100%);
+  box-shadow:0 0 3px 1px rgba(255,255,255,.75), 0 0 9px 3px rgba(255,241,180,.4);
   opacity:0;
-  transform:translate(-50%,-50%) scale(.4);
+  transform:translate(-50%,-50%) scale(.55);
   pointer-events:none;
 }
-.studio-home .studio-hero-portrait.is-sparkling .studio-eye-sparkle {
-  animation:studio-eye-catchlight .52s ease-in-out both;
+@media (hover:hover) {
+  .studio-home .studio-hero-portrait:hover .studio-eye-sparkle {
+    animation:studio-eye-catchlight 1.05s ease-out both;
+  }
+}
+.studio-home .studio-hero-portrait:is(.is-sparkling,:focus-visible,.is-active) .studio-eye-sparkle {
+  animation:studio-eye-catchlight 1.05s ease-out both;
 }
 @keyframes studio-eye-catchlight {
-  0%,12% {opacity:0;transform:translate(-50%,-50%) scale(.4);}
-  28% {opacity:.9;transform:translate(-50%,-50%) scale(1);}
-  52% {opacity:.48;transform:translate(-50%,-50%) scale(.82);}
-  72% {opacity:.78;transform:translate(-50%,-50%) scale(1);}
-  100% {opacity:0;transform:translate(-50%,-50%) scale(.5);}
+  0%,8% {opacity:0;transform:translate(-50%,-50%) scale(.5);}
+  19% {opacity:1;transform:translate(-50%,-50%) scale(1.2);}
+  34%,65% {opacity:1;transform:translate(-50%,-50%) scale(1);}
+  82% {opacity:.6;transform:translate(-50%,-50%) scale(.8);}
+  100% {opacity:0;transform:translate(-50%,-50%) scale(.55);}
 }
 @media(prefers-reduced-motion:reduce){
-  .studio-home .studio-hero-portrait.is-sparkling .studio-eye-sparkle {animation:none;}
+  .studio-home .studio-hero-portrait .studio-eye-sparkle {animation:none !important;}
 }
