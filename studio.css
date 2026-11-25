@@ -37,7 +37,6 @@ body { overflow-x:clip; }
 .studio-scroll-cue:hover{color:#fff;}
 .studio-scroll-cue span{display:inline-block;margin-left:14px;transition:transform .25s;}
 .studio-scroll-cue:hover span{transform:translateY(5px);}
-.studio-home .bergen-signature{right:max(36px,calc((100vw - 1240px)/2));bottom:80px;z-index:3;font-size:clamp(1.1rem,1.5vw,1.65rem);}
 .studio-home .bergen-rain{opacity:.56;}
 .studio-ticker{position:relative;overflow:hidden;background:var(--studio-sand);color:var(--studio-blue);border-block:1px solid var(--studio-line);padding:20px 0;}
 .studio-ticker-track{display:flex;width:max-content;gap:2.5rem;white-space:nowrap;animation:studio-marquee 31s linear infinite;}
@@ -145,7 +144,6 @@ body { overflow-x:clip; }
  .studio-hero-main{grid-template-columns:minmax(0,1fr);gap:clamp(42px,6vw,60px);padding:65px 0 55px;}
  .studio-home .studio-hero h1{font-size:clamp(4.7rem,12vw,8rem);}
  .studio-hero-portrait{justify-self:center;width:min(70%,365px);max-width:365px;}
- .studio-home .bergen-signature{right:22px;bottom:76px;}
  .studio-manifest-grid{grid-template-columns:1fr;gap:44px;}
  .studio-manifest-aside{max-width:520px;margin-left:auto;}
  .studio-work-heading,.studio-approach-head{align-items:flex-start;flex-direction:column;gap:22px;}
@@ -162,7 +160,6 @@ body { overflow-x:clip; }
  .studio-hero-serial{font-size:.62rem;}
  .studio-hero-strap{font-size:.94rem;}
  .studio-hero-portrait{width:min(73%,320px);}
- .studio-home .bergen-signature{font-size:1.1rem;bottom:75px;}
  .studio-manifest,.studio-work,.studio-approach,.studio-end{padding-block:75px;}
  .studio-statement{font-size:clamp(3.05rem,9vw,5.8rem);}
  .studio-work-heading{padding:48px 0 54px;}
@@ -241,40 +238,7 @@ body { overflow-x:clip; }
 @media(max-width:700px){.studio-manifest-grid{padding-top:8px;}}
 
 
-/* Kjuagutt – portrait hover reveal, just above the hero's lower rule. */
-.studio-home .studio-hero .studio-hero-signature {
-  right:max(36px,calc((100vw - 1240px)/2));
-  bottom:112px;
-  opacity:0;
-  visibility:hidden;
-  transform:rotate(-7deg);
-  transition:opacity .23s ease,visibility .23s ease;
-}
-.studio-home .studio-hero:has(.studio-hero-portrait:is(:hover,:focus)) .studio-hero-signature {
-  opacity:1;
-  visibility:visible;
-}
-@media(prefers-reduced-motion:no-preference) {
-  .studio-home .studio-hero:has(.studio-hero-portrait:is(:hover,:focus)) .studio-hero-signature {
-    animation:kjuagutt-wobble .38s ease-in-out infinite alternate;
-  }
-}
-@keyframes kjuagutt-wobble {
-  0%   { transform:translate(-2px,0) rotate(-9deg); }
-  25%  { transform:translate(2px,-2px) rotate(-5deg); }
-  50%  { transform:translate(-1px,1px) rotate(-8deg); }
-  75%  { transform:translate(2px,0) rotate(-4deg); }
-  100% { transform:translate(0,-2px) rotate(-7deg); }
-}
-@media(max-width:820px) {
-  .studio-home .studio-hero .studio-hero-signature { right:22px; bottom:105px; }
-}
-@media(max-width:700px) {
-  .studio-home .studio-hero .studio-hero-signature { bottom:103px; }
-}
-
 /* Palette 03: bright cobalt as the signature, butter-yellow as the small surprise. */
-.studio-home .studio-hero .studio-hero-signature{color:#F6D76B;}
 .studio-home .studio-hero .studio-hero-serial{color:#F6D76B;}
 .studio-project-media--skred{background:#DCE9DF;}
 .studio-project-media--snap{background:#E4EAFF;}

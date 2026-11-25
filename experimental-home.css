@@ -24,35 +24,6 @@
   transform:rotate(-12deg);
   pointer-events:none;
 }
-/* Two slightly offset print labels instead of another horizontal rule. */
-.studio-home .studio-hero-topline{
-  border:0;
-  padding:4px 0 0;
-  align-items:center;
-  gap:16px;
-  color:#14171D;
-}
-.studio-home .studio-hero-topline span{
-  display:inline-block;
-  line-height:1;
-  white-space:nowrap;
-  font-weight:900;
-  letter-spacing:.105em;
-}
-.studio-home .studio-hero-topline span:first-child{
-  padding:12px 14px 11px;
-  color:#023BE6;
-  background:#FAFAF7;
-  transform:rotate(-2deg);
-  box-shadow:4px 4px 0 #14171D;
-}
-.studio-home .studio-hero-topline span:last-child{
-  padding:11px 16px 10px;
-  color:#14171D;
-  background:#F6D76B;
-  transform:rotate(3deg);
-  box-shadow:4px 4px 0 #14171D;
-}
 .studio-home .studio-hero h1 .studio-hero-greeting{
   display:block;
   color:var(--poster-yellow);
@@ -87,9 +58,45 @@
   transform:translate(3px,3px);
   box-shadow:3px 3px 0 var(--poster-ink);
 }
+/* A pull-out yellow print plate lives behind the original circular photo. */
+.studio-home .studio-hero-portrait {
+  isolation:isolate;
+  overflow:visible;
+}
 .studio-home .studio-hero-portrait .hero-portrait-frame {
+  position:relative;
+  z-index:2;
   border:6px solid #FAFAF7;
-  box-shadow:22px 22px 0 #F6D76B,0 27px 48px rgba(9,19,57,.25);
+  box-shadow:0 24px 48px rgba(9,19,57,.26);
+}
+.studio-home .studio-portrait-backplate {
+  position:absolute;
+  z-index:1;
+  inset:-7px -22px -47px 9px;
+  display:block;
+  background:#F6D76B;
+  border:2px solid #14171D;
+  box-shadow:9px 10px 0 rgba(20,23,29,.45);
+  opacity:0;
+  visibility:hidden;
+  transform:translate(-20px,-18px) rotate(-4deg) scale(.92);
+  transition:transform .55s cubic-bezier(.16,1,.3,1),opacity .25s ease,visibility .25s ease;
+  pointer-events:none;
+}
+.studio-home .studio-portrait-backplate-text{
+  position:absolute;
+  right:clamp(17px,2vw,34px);
+  bottom:8px;
+  color:#14171D;
+  font:italic 700 clamp(1.15rem,2vw,1.8rem)/1 Georgia,'Times New Roman',serif;
+  letter-spacing:-.045em;
+  white-space:nowrap;
+  transform:rotate(-2deg);
+}
+.studio-home .studio-hero-portrait:is(:hover,:focus) .studio-portrait-backplate{
+  opacity:1;
+  visibility:visible;
+  transform:translate(9px,12px) rotate(4deg) scale(1);
 }
 .studio-home .site-header .brand-mark{
   border-radius:2px;
@@ -337,6 +344,7 @@
 @media(prefers-reduced-motion:reduce){
   .studio-home .studio-project{transition:none;}
   .studio-home .studio-hero .studio-hero-portrait{transition:none;}
+  .studio-home .studio-portrait-backplate{transition:none;}
 }
 
 
@@ -357,15 +365,6 @@
   overflow-wrap:normal;
 }
 @media(max-width:700px){
-  /* Retain Bergen on small screens; both labels stay short and compact. */
-  .studio-home .studio-hero-topline{
-    font-size:.6rem;
-    letter-spacing:.07em;
-    gap:10px;
-  }
-  .studio-home .studio-hero-topline span:last-child{display:inline-block;}
-  .studio-home .studio-hero-topline span:first-child{padding:10px 11px;}
-  .studio-home .studio-hero-topline span:last-child{padding:10px 12px;}
   .studio-home .studio-project:nth-child(3) h3{
     font-size:clamp(1.55rem,7vw,3.3rem);
   }
