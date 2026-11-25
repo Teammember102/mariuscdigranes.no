@@ -222,3 +222,12 @@ body { overflow-x:clip; }
 }
 @keyframes studio-page-out { to {opacity:0;filter:blur(2px);} }
 @keyframes studio-page-in {from {opacity:0;transform:translateY(7px);} to {opacity:1;transform:translateY(0);} }
+
+@media(max-width:360px){
+  .studio-home .studio-hero h1{font-size:clamp(3rem,10.9vw,3.6rem);}
+  .studio-hero-actions{align-items:flex-start;flex-direction:column;}
+  .studio-work-heading h2{font-size:3.5rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  ::view-transition-old(root),::view-transition-new(root){animation-duration:.01ms!important;}
+}
