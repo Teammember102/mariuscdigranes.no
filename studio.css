@@ -74,7 +74,7 @@ body { overflow-x:clip; }
 .studio-project-media--snap{background:#E4EAFF;}
 .studio-project-media--snap>img{box-shadow:15px 20px 34px rgba(45,56,79,.19);width:97%;object-fit:contain;transform:rotate(-2deg);}
 .studio-project:hover .studio-project-media--snap>img{transform:rotate(0deg) scale(1.035);}
-.studio-project-media--skred{background:#F6D76B;}
+.studio-project-media--skred{background:#DCE9DF;}
 .studio-phone-stack{display:flex;gap:clamp(5px,1.5vw,25px);align-items:center;justify-content:center;width:100%;height:100%;}
 .studio-phone-stack img{width:46%;max-height:500px;object-fit:contain;filter:drop-shadow(8px 15px 9px rgba(45,43,35,.16));transform:rotate(-5deg) translateY(8px);}
 .studio-phone-stack img:nth-child(2){transform:rotate(6deg) translateY(-8px);}
@@ -276,7 +276,7 @@ body { overflow-x:clip; }
 /* Palette 03: bright cobalt as the signature, butter-yellow as the small surprise. */
 .studio-home .studio-hero .studio-hero-signature{color:#F6D76B;}
 .studio-home .studio-hero .studio-hero-serial{color:#F6D76B;}
-.studio-project-media--skred{background:#F6D76B;}
+.studio-project-media--skred{background:#DCE9DF;}
 .studio-project-media--snap{background:#E4EAFF;}
 .studio-project-media--jobb{background:#EDE3D4;}
 .studio-home .studio-hero a:focus-visible{outline-color:#F6D76B;}
