@@ -239,3 +239,36 @@ body { overflow-x:clip; }
 .studio-project-index{justify-content:flex-end;}
 .studio-manifest-aside{padding-top:22px;}
 @media(max-width:700px){.studio-manifest-grid{padding-top:8px;}}
+
+
+/* Kjuagutt – portrait hover reveal, just above the hero's lower rule. */
+.studio-home .studio-hero .studio-hero-signature {
+  right:max(36px,calc((100vw - 1240px)/2));
+  bottom:112px;
+  opacity:0;
+  visibility:hidden;
+  transform:rotate(-7deg);
+  transition:opacity .23s ease,visibility .23s ease;
+}
+.studio-home .studio-hero:has(.studio-hero-portrait:is(:hover,:focus)) .studio-hero-signature {
+  opacity:1;
+  visibility:visible;
+}
+@media(prefers-reduced-motion:no-preference) {
+  .studio-home .studio-hero:has(.studio-hero-portrait:is(:hover,:focus)) .studio-hero-signature {
+    animation:kjuagutt-wobble .38s ease-in-out infinite alternate;
+  }
+}
+@keyframes kjuagutt-wobble {
+  0%   { transform:translate(-2px,0) rotate(-9deg); }
+  25%  { transform:translate(2px,-2px) rotate(-5deg); }
+  50%  { transform:translate(-1px,1px) rotate(-8deg); }
+  75%  { transform:translate(2px,0) rotate(-4deg); }
+  100% { transform:translate(0,-2px) rotate(-7deg); }
+}
+@media(max-width:820px) {
+  .studio-home .studio-hero .studio-hero-signature { right:22px; bottom:105px; }
+}
+@media(max-width:700px) {
+  .studio-home .studio-hero .studio-hero-signature { bottom:103px; }
+}
