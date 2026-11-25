@@ -48,8 +48,12 @@
             <path d="M24 16 L20.5 32.5"/>
             <path class="runner-arm runner-arm--front" d="M23 20.5 L31 25.5 L37 22"/>
             <path class="runner-arm runner-arm--back" d="M23 20.5 L15.5 27 L11.5 23"/>
-            <path class="runner-leg runner-leg--front" d="M20.5 32.5 L29 43 L38 46"/>
-            <path class="runner-leg runner-leg--back" d="M20.5 32.5 L15 44 L7 49"/>
+            <g class="runner-leg runner-leg--back">
+              <path d="M20.5 32.5 L20.5 43.5 L24.5 52 L29.5 52"/>
+            </g>
+            <g class="runner-leg runner-leg--front">
+              <path d="M20.5 32.5 L20.5 43.5 L24.5 52 L29.5 52"/>
+            </g>
           </g>
         </svg>
       </span>

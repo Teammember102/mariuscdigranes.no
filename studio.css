@@ -314,14 +314,28 @@ body { overflow-x:clip; }
 .studio-reading-progress-runner .runner-leg{transform-box:view-box;}
 .studio-reading-progress-runner .runner-arm{transform-origin:23px 20.5px;}
 .studio-reading-progress-runner .runner-leg{transform-origin:20.5px 32.5px;}
-.studio-reading-progress-wrap.is-scrolling .runner-bounce{animation:studio-run-bounce .32s ease-in-out infinite alternate;}
-.studio-reading-progress-wrap.is-scrolling .runner-arm--front{animation:studio-run-arm .46s ease-in-out infinite alternate;}
-.studio-reading-progress-wrap.is-scrolling .runner-arm--back{animation:studio-run-arm .46s ease-in-out infinite alternate-reverse;}
-.studio-reading-progress-wrap.is-scrolling .runner-leg--front{animation:studio-run-leg .46s ease-in-out infinite alternate;}
-.studio-reading-progress-wrap.is-scrolling .runner-leg--back{animation:studio-run-leg .46s ease-in-out infinite alternate-reverse;}
-@keyframes studio-run-bounce{from{transform:translateY(0)}to{transform:translateY(-2px)}}
-@keyframes studio-run-arm{from{transform:rotate(-31deg)}to{transform:rotate(34deg)}}
-@keyframes studio-run-leg{from{transform:rotate(-28deg)}to{transform:rotate(30deg)}}
+/* Distinct forward and trailing legs even when the page is not moving. */
+.studio-reading-progress-runner .runner-leg--front{transform:rotate(-48deg);}
+.studio-reading-progress-runner .runner-leg--back{transform:rotate(48deg);}
+.studio-reading-progress-wrap.is-scrolling .runner-bounce{animation:studio-run-bounce .28s ease-in-out infinite alternate;}
+.studio-reading-progress-wrap.is-scrolling .runner-arm--front{animation:studio-run-arm .56s ease-in-out infinite alternate;}
+.studio-reading-progress-wrap.is-scrolling .runner-arm--back{animation:studio-run-arm .56s ease-in-out infinite alternate-reverse;}
+.studio-reading-progress-wrap.is-scrolling .runner-leg--front{animation:studio-run-stride-front .56s ease-in-out infinite;}
+.studio-reading-progress-wrap.is-scrolling .runner-leg--back{animation:studio-run-stride-back .56s ease-in-out infinite;}
+@keyframes studio-run-bounce{from{transform:translateY(0)}to{transform:translateY(-2.5px)}}
+@keyframes studio-run-arm{from{transform:rotate(-38deg)}to{transform:rotate(38deg)}}
+@keyframes studio-run-stride-front{
+  0%,100%{transform:rotate(-48deg);}
+  25%{transform:rotate(-23deg);}
+  50%{transform:rotate(48deg);}
+  75%{transform:rotate(23deg);}
+}
+@keyframes studio-run-stride-back{
+  0%,100%{transform:rotate(48deg);}
+  25%{transform:rotate(23deg);}
+  50%{transform:rotate(-48deg);}
+  75%{transform:rotate(-23deg);}
+}
 @media(max-width:700px){
   .studio-reading-progress-wrap{height:37px;}
   .studio-reading-progress-runner{width:32px;height:34px;}
