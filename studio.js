@@ -2,7 +2,7 @@
 (() => {
   "use strict";
   const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (reduced.matches) return;
+  if (!reduced.matches) {
 
   // Animate only content that is about to enter the viewport.
   const revealEls=[
@@ -31,30 +31,63 @@
       }
     });
   }
-  // A thin reading-progress underline, restricted to the homepage.
-  if(document.body.classList.contains("studio-home")) {
-    const line=document.createElement("span");
-    line.className="studio-reading-progress";
-    line.setAttribute("aria-hidden","true");
-    Object.assign(line.style,{
-      position:"fixed",top:"0",left:"0",height:"3px",width:"100%",
-      transformOrigin:"left center",transform:"scaleX(0)",
-      background:"#F6D76B",zIndex:"50",pointerEvents:"none"
-    });
-    document.body.append(line);
-    let scheduled=false;
-    const measure=()=>{
-      scheduled=false;
-      const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
-      line.style.transform="scaleX("+Math.min(1,Math.max(0,scrollY/max))+")";
+  }
+
+  // The top reading-progress line now has a small runner at its leading edge.
+  // It follows scroll position, with running movement only while the user scrolls.
+  if (document.body.classList.contains("studio-home")) {
+    const wrap = document.createElement("div");
+    wrap.className = "studio-reading-progress-wrap";
+    wrap.setAttribute("aria-hidden", "true");
+    wrap.innerHTML = `
+      <span class="studio-reading-progress-line"></span>
+      <span class="studio-reading-progress-runner">
+        <svg viewBox="0 0 54 58" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <g class="runner-bounce" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="26" cy="8.5" r="5.6"/>
+            <path d="M24 16 L20.5 32.5"/>
+            <path class="runner-arm runner-arm--front" d="M23 20.5 L31 25.5 L37 22"/>
+            <path class="runner-arm runner-arm--back" d="M23 20.5 L15.5 27 L11.5 23"/>
+            <path class="runner-leg runner-leg--front" d="M20.5 32.5 L29 43 L38 46"/>
+            <path class="runner-leg runner-leg--back" d="M20.5 32.5 L15 44 L7 49"/>
+          </g>
+        </svg>
+      </span>
+    `;
+    document.body.append(wrap);
+
+    const line = wrap.querySelector(".studio-reading-progress-line");
+    const runner = wrap.querySelector(".studio-reading-progress-runner");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let scheduled = false;
+    let stopTimer = null;
+    let previousY = window.scrollY;
+
+    const measure = () => {
+      scheduled = false;
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const fraction = Math.min(1, Math.max(0, window.scrollY / max));
+      const viewportWidth = document.documentElement.clientWidth;
+      const runnerWidth = runner.getBoundingClientRect().width || 38;
+      const x = Math.min(viewportWidth - runnerWidth, Math.max(0, fraction * viewportWidth - runnerWidth / 2));
+
+      line.style.transform = "scaleX(" + fraction + ")";
+      runner.style.transform = "translate3d(" + x + "px,0,0)";
+
+      if (!reducedMotion.matches && Math.abs(window.scrollY - previousY) > 0.5) {
+        wrap.classList.add("is-scrolling");
+        clearTimeout(stopTimer);
+        stopTimer = setTimeout(() => wrap.classList.remove("is-scrolling"), 180);
+      }
+      previousY = window.scrollY;
     };
-    const onScroll=()=>{
-      if(scheduled)return;
-      scheduled=true;
+    const onScroll = () => {
+      if (scheduled) return;
+      scheduled = true;
       requestAnimationFrame(measure);
     };
-    addEventListener("scroll",onScroll,{passive:true});
-    addEventListener("resize",onScroll,{passive:true});
+    window.addEventListener("scroll", onScroll, {passive: true});
+    window.addEventListener("resize", onScroll, {passive: true});
     measure();
   }
 })();

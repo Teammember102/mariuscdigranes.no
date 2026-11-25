@@ -280,3 +280,55 @@ body { overflow-x:clip; }
 .studio-project-media--snap{background:#E4EAFF;}
 .studio-project-media--jobb{background:#EDE3D4;}
 .studio-home .studio-hero a:focus-visible{outline-color:#F6D76B;}
+
+
+/* Scroll-controlled running figure: travels at the tip of the existing yellow progress bar. */
+.studio-reading-progress-wrap{
+  position:fixed;
+  z-index:60;
+  top:0;left:0;right:0;
+  height:44px;
+  pointer-events:none;
+}
+.studio-reading-progress-line{
+  position:absolute;
+  left:0;top:0;
+  width:100%;
+  height:3px;
+  background:#F6D76B;
+  transform:scaleX(0);
+  transform-origin:left center;
+  will-change:transform;
+}
+.studio-reading-progress-runner{
+  position:absolute;
+  top:2px;left:0;
+  width:38px;height:39px;
+  color:#F6D76B;
+  will-change:transform;
+  filter:drop-shadow(0 1px 1px rgba(2,37,140,.5));
+}
+.studio-reading-progress-runner svg{display:block;width:100%;height:100%;overflow:visible;}
+.studio-reading-progress-runner .runner-bounce{transform-origin:25px 32px;}
+.studio-reading-progress-runner .runner-arm,
+.studio-reading-progress-runner .runner-leg{transform-box:view-box;}
+.studio-reading-progress-runner .runner-arm{transform-origin:23px 20.5px;}
+.studio-reading-progress-runner .runner-leg{transform-origin:20.5px 32.5px;}
+.studio-reading-progress-wrap.is-scrolling .runner-bounce{animation:studio-run-bounce .32s ease-in-out infinite alternate;}
+.studio-reading-progress-wrap.is-scrolling .runner-arm--front{animation:studio-run-arm .46s ease-in-out infinite alternate;}
+.studio-reading-progress-wrap.is-scrolling .runner-arm--back{animation:studio-run-arm .46s ease-in-out infinite alternate-reverse;}
+.studio-reading-progress-wrap.is-scrolling .runner-leg--front{animation:studio-run-leg .46s ease-in-out infinite alternate;}
+.studio-reading-progress-wrap.is-scrolling .runner-leg--back{animation:studio-run-leg .46s ease-in-out infinite alternate-reverse;}
+@keyframes studio-run-bounce{from{transform:translateY(0)}to{transform:translateY(-2px)}}
+@keyframes studio-run-arm{from{transform:rotate(-31deg)}to{transform:rotate(34deg)}}
+@keyframes studio-run-leg{from{transform:rotate(-28deg)}to{transform:rotate(30deg)}}
+@media(max-width:700px){
+  .studio-reading-progress-wrap{height:37px;}
+  .studio-reading-progress-runner{width:32px;height:34px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .studio-reading-progress-runner{display:none;}
+  .studio-reading-progress-wrap.is-scrolling .runner-bounce,
+  .studio-reading-progress-wrap.is-scrolling .runner-arm,
+  .studio-reading-progress-wrap.is-scrolling .runner-leg{animation:none;}
+}
