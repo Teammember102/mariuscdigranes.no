@@ -130,7 +130,7 @@
     if(busy)return;
     const cached=getCache();
     if(cached&&cached.expires>Date.now()&&cached.hours.length){
-      try{render(cached.hours,cached.updatedAt,false);return;}catch(_){}
+      try{render(cached.hours,cached.updatedAt,Date.now()-cached.updatedAt>15*HOUR);return;}catch(_){}
     }
     busy=true;
     const controller=new AbortController();
@@ -142,9 +142,9 @@
       const hours=parseForecast(payload);
       const now=Date.now();
       const updatedAt=Date.parse(payload.updatedAt)||now;
-      const expires=now+15*60000; // Cache locally; the hourly GitHub Action updates our same-origin JSON.
+      const expires=now+15*60000; // Cache locally for 15 minutes; GitHub Actions refreshes the data twice daily.
       putCache({hours,updatedAt,expires});
-      render(hours,updatedAt,now-updatedAt>3*HOUR);
+      render(hours,updatedAt,now-updatedAt>15*HOUR);
     }catch(err){
       if(cached&&cached.hours?.length){
         try{render(cached.hours,cached.updatedAt,true);return;}catch(_){}
