@@ -346,3 +346,35 @@ body { overflow-x:clip; }
   .studio-reading-progress-wrap.is-scrolling .runner-arm,
   .studio-reading-progress-wrap.is-scrolling .runner-leg{animation:none;}
 }
+
+
+/* Dedicated top lane for the scrolling runner, above the sticky menu.
+   Body padding moves the menu AND the full page content down in normal flow. */
+.studio-home {
+  --studio-runner-lane:48px;
+  padding-top:var(--studio-runner-lane);
+}
+.studio-home::before {
+  content:"";
+  position:fixed;
+  inset:0 0 auto 0;
+  height:var(--studio-runner-lane);
+  z-index:55;
+  pointer-events:none;
+  background:var(--studio-blue);
+}
+.studio-home .site-header {
+  top:var(--studio-runner-lane);
+}
+.studio-home .skip-link { z-index:70; }
+html:has(body.studio-home) {
+  scroll-padding-top:calc(6rem + 48px);
+}
+@media(max-width:700px) {
+  .studio-home { --studio-runner-lane:44px; }
+  html:has(body.studio-home) { scroll-padding-top:calc(6rem + 44px); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .studio-home { --studio-runner-lane:0px; }
+  html:has(body.studio-home) { scroll-padding-top:6rem; }
+}
