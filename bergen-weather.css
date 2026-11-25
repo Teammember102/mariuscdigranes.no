@@ -5,38 +5,38 @@
   z-index:4;
   background:#F6D76B;
   color:#14171D;
-  border-top:3px solid #14171D;
-  border-bottom:3px solid #14171D;
-  box-shadow:0 9px 0 #14171D;
+  border-top:2px solid #14171D;
+  border-bottom:2px solid #14171D;
+  box-shadow:0 5px 0 #14171D;
   overflow:hidden;
 }
 .bergen-weather-header{
-  min-height:126px;
+  min-height:66px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:26px;
-  padding-block:24px 22px;
+  gap:14px;
+  padding-block:11px 10px;
 }
 .bergen-weather-heading{
   display:flex;
   flex-wrap:wrap;
   align-items:baseline;
-  column-gap:clamp(12px,2vw,26px);
-  row-gap:7px;
+  column-gap:clamp(8px,1vw,15px);
+  row-gap:5px;
 }
 .bergen-weather-stamp{
   align-self:center;
   color:#FAFAF7;
   background:#023BE6;
-  padding:7px 9px;
-  font:850 .68rem/1 var(--sans);
+  padding:5px 7px;
+  font:850 .56rem/1 var(--sans);
   letter-spacing:.08em;
   transform:rotate(-7deg);
   white-space:nowrap;
 }
 .bergen-weather-heading h2{
-  font:900 clamp(2.65rem,5.5vw,5.4rem)/.8 var(--sans);
+  font:900 clamp(1.35rem,2.3vw,2.15rem)/.95 var(--sans);
   letter-spacing:-.095em;
   margin:0;
   color:#14171D;
@@ -45,13 +45,21 @@
 .bergen-weather-subtitle{
   align-self:flex-end;
   color:#14171D;
-  font:850 clamp(.62rem,.82vw,.78rem)/1.4 var(--sans);
+  font:850 clamp(.55rem,.7vw,.66rem)/1.4 var(--sans);
   letter-spacing:.105em;
   white-space:nowrap;
 }
-.bergen-weather-toolbar{display:flex;align-items:center;gap:clamp(16px,2vw,30px);}
+
+.bergen-weather-note{
+  align-self:center;
+  color:#023BE6;
+  font:italic 600 clamp(.72rem,.95vw,.9rem)/1.15 Georgia,'Times New Roman',serif;
+  white-space:nowrap;
+  transform:rotate(-2deg);
+}
+.bergen-weather-toolbar{display:flex;align-items:center;gap:clamp(10px,1.5vw,20px);flex-shrink:0;}
 .bergen-weather-status{
-  font:750 .65rem/1.35 var(--sans);
+  font:750 .56rem/1.35 var(--sans);
   letter-spacing:.085em;
   max-width:130px;
   text-align:right;
@@ -59,14 +67,14 @@
 }
 .bergen-weather-arrows{display:flex;gap:7px;}
 .bergen-weather-arrow{
-  width:44px;
-  height:44px;
+  width:32px;
+  height:32px;
   border:2px solid #14171D;
   border-radius:0;
   color:#14171D;
   background:#FAFAF7;
   cursor:pointer;
-  font:800 1.5rem/1 var(--sans);
+  font:800 1.05rem/1 var(--sans);
   transition:background .2s,color .2s,transform .2s;
 }
 .bergen-weather-arrow:hover{background:#023BE6;color:#FAFAF7;transform:translateY(-2px);}
@@ -91,11 +99,11 @@
   flex-direction:column;
   align-items:flex-start;
   justify-content:space-between;
-  gap:7px;
-  flex:0 0 clamp(145px,12.5vw,188px);
-  min-width:145px;
-  height:195px;
-  padding:18px 19px 15px;
+  gap:4px;
+  flex:0 0 clamp(128px,10.5vw,160px);
+  min-width:128px;
+  height:132px;
+  padding:11px 12px 9px;
   border-right:2px solid #14171D;
   background:#FAFAF7;
   color:#14171D;
@@ -105,18 +113,18 @@
 .bergen-weather-hour:hover{background:#E4EAFF;color:#14171D;}
 .bergen-weather-hour.is-current:hover{background:#023BE6;color:#FAFAF7;}
 .bergen-weather-hour-top{display:flex;justify-content:space-between;gap:8px;width:100%;align-items:baseline;}
-.bergen-weather-day{font-size:.57rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
-.bergen-weather-time{font-size:.76rem;font-weight:900;letter-spacing:-.015em;}
+.bergen-weather-day{font-size:.52rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;}
+.bergen-weather-time{font-size:.66rem;font-weight:900;letter-spacing:-.015em;}
 .bergen-weather-symbol{
   display:grid;
   place-items:center;
-  width:52px;
-  height:54px;
+  width:37px;
+  height:38px;
   margin:0;
 }
 .bergen-weather-symbol svg{
-  width:58px;
-  height:58px;
+  width:42px;
+  height:42px;
   display:block;
   overflow:visible;
   stroke-linecap:round;
@@ -128,7 +136,7 @@
 .bergen-weather-symbol svg .weather-bolt{stroke:currentColor;stroke-width:2;fill:#F6D76B;}
 .bergen-weather-hour.is-current .weather-cloud{fill:#FAFAF7;}
 .bergen-weather-temp{
-  font:900 clamp(1.65rem,2.5vw,2.45rem)/1 var(--sans);
+  font:900 clamp(1.35rem,1.85vw,1.85rem)/1 var(--sans);
   letter-spacing:-.075em;
   white-space:nowrap;
 }
@@ -138,7 +146,7 @@
   justify-content:space-between;
   gap:8px;
   align-items:baseline;
-  font-size:.64rem;
+  font-size:.56rem;
   font-weight:750;
 }
 .bergen-weather-rain{white-space:nowrap;}
@@ -167,8 +175,8 @@
   justify-content:space-between;
   align-items:center;
   gap:22px;
-  padding-block:15px 19px;
-  font-size:.58rem;
+  padding-block:8px 10px;
+  font-size:.52rem;
   line-height:1.6;
   letter-spacing:.065em;
   font-weight:850;
@@ -176,21 +184,22 @@
 .bergen-weather-footer a{color:inherit;text-underline-offset:3px;}
 .bergen-weather-footer a:hover{color:#023BE6;}
 @media(max-width:900px){
-  .bergen-weather-header{align-items:flex-start;flex-direction:column;gap:21px;padding-block:25px;}
-  .bergen-weather-toolbar{width:100%;justify-content:space-between;}
+  .bergen-weather-header{align-items:center;flex-direction:row;flex-wrap:wrap;gap:12px;padding-block:12px;}
+  .bergen-weather-toolbar{width:auto;justify-content:flex-end;margin-left:auto;}
   .bergen-weather-status{text-align:left;max-width:none;}
   .bergen-weather-subtitle{align-self:center;}
 }
 @media(max-width:700px){
-  .bergen-weather-header{gap:22px;}
-  .bergen-weather-heading{gap:12px;}
-  .bergen-weather-heading h2{font-size:clamp(2.6rem,12vw,4rem);}
-  .bergen-weather-stamp{font-size:.56rem;}
-  .bergen-weather-subtitle{width:100%;margin-top:5px;font-size:.65rem;}
-  .bergen-weather-hour{flex-basis:142px;min-width:142px;height:182px;padding:16px 13px;}
-  .bergen-weather-symbol{width:48px;height:51px;}
-  .bergen-weather-symbol svg{width:54px;height:54px;}
-  .bergen-weather-footer{align-items:flex-start;flex-direction:column;gap:6px;font-size:.55rem;}
+  .bergen-weather-note{font-size:.75rem;}
+  .bergen-weather-header{gap:10px;}
+  .bergen-weather-heading{gap:7px 10px;}
+  .bergen-weather-heading h2{font-size:clamp(1.35rem,5.5vw,1.75rem);}
+  .bergen-weather-stamp{font-size:.5rem;}
+  .bergen-weather-subtitle{width:auto;margin-top:0;font-size:.53rem;}
+  .bergen-weather-hour{flex-basis:120px;min-width:120px;height:123px;padding:10px 11px 8px;}
+  .bergen-weather-symbol{width:34px;height:35px;}
+  .bergen-weather-symbol svg{width:38px;height:38px;}
+  .bergen-weather-footer{align-items:flex-start;flex-direction:column;gap:4px;font-size:.51rem;}
 }
 @media(prefers-reduced-motion:reduce){
   .bergen-weather-hour,.bergen-weather-arrow{transition:none;}

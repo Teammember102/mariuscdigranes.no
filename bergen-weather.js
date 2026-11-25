@@ -166,18 +166,19 @@
   document.querySelector("[data-weather-prev]")?.addEventListener("click",()=>slide(-1));
   document.querySelector("[data-weather-next]")?.addEventListener("click",()=>slide(1));
   viewport.addEventListener("mouseenter",()=>{hovered=true;});
-  viewport.addEventListener("mouseleave",()=>{hovered=false;pauseForInteraction();});
-  viewport.addEventListener("focusin",()=>{focused=true;});
+  viewport.addEventListener("mouseleave",()=>{hovered=false;pauseUntil=0;focused=viewport.matches(":focus-visible");});
+  viewport.addEventListener("focusin",()=>{focused=viewport.matches(":focus-visible");});
   viewport.addEventListener("focusout",()=>{focused=false;pauseForInteraction();});
   viewport.addEventListener("pointerdown",()=>{pointerActive=true;});
   window.addEventListener("pointerup",()=>{if(pointerActive){pointerActive=false;pauseForInteraction();}});
   viewport.addEventListener("wheel",pauseForInteraction,{passive:true});
   viewport.addEventListener("touchend",pauseForInteraction,{passive:true});
+  window.addEventListener("pointercancel",()=>{pointerActive=false;pauseUntil=0;});
   function animate(timestamp){
     const elapsed=Math.min(60,timestamp-(lastFrame||timestamp));
     lastFrame=timestamp;
     if(widthOfSet&&!document.hidden&&!prefersReduced.matches&&!hovered&&!focused&&!pointerActive&&timestamp>pauseUntil){
-      viewport.scrollLeft+=elapsed*.045;
+      viewport.scrollLeft+=elapsed*.12;
       if(viewport.scrollLeft>=widthOfSet)viewport.scrollLeft-=widthOfSet;
     }
     requestAnimationFrame(animate);

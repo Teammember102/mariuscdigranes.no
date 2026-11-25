@@ -11,8 +11,8 @@
  <title>Marius Digranes – UX & interaksjonsdesign</title>
  <link rel="stylesheet" href="styles.css?v=palette-03">
  <link rel="stylesheet" href="studio.css?v=portrait-07">
- <link rel="stylesheet" href="experimental-home.css?v=portrait-oval-05">
- <link rel="stylesheet" href="bergen-weather.css?v=bergen-01">
+ <link rel="stylesheet" href="experimental-home.css?v=portrait-arc-06">
+ <link rel="stylesheet" href="bergen-weather.css?v=bergen-compact-03">
 </head>
 <body class="home-page studio-home">
  <a class="skip-link" href="#main">Hopp til innhold</a>
@@ -41,7 +41,12 @@
       </div>
      </div>
      <figure class="hero-portrait studio-hero-portrait" tabindex="0" role="button" aria-expanded="false" aria-label="Portrett av Marius i Amsterdam. Hold musepekeren over eller fokuser bildet for å se Kjuagutt på en gul bakplate.">
-      <span class="studio-portrait-backplate" aria-hidden="true"><span class="studio-portrait-backplate-text">Kjuagutt</span></span>
+      <span class="studio-portrait-backplate" aria-hidden="true">
+       <svg class="studio-portrait-arc-text" viewBox="0 0 500 500" preserveAspectRatio="none" focusable="false">
+        <defs><path id="portrait-kjuagutt-arc" d="M 382 98 C 490 182 490 313 382 409"/></defs>
+        <text><textPath href="#portrait-kjuagutt-arc" startOffset="50%" text-anchor="middle">Kjuagutt</textPath></text>
+       </svg>
+      </span>
       <div class="hero-portrait-frame">
        <img src="assets/portrait.jpg" width="1536" height="2048" alt="Marius med blått skjerf ved en kanal i Amsterdam" fetchpriority="high" decoding="async">
       </div>
@@ -57,6 +62,7 @@
      <span class="bergen-weather-stamp">VÆR / 01</span>
      <h2 id="bergen-weather-title">BERGEN<span>.</span></h2>
      <span class="bergen-weather-subtitle">TIME FOR TIME — NESTE 24 TIMER</span>
+     <span class="bergen-weather-note">Fordi jeg er en værentusiast:)</span>
     </div>
     <div class="bergen-weather-toolbar">
      <span class="bergen-weather-status" id="bergen-weather-status" role="status" aria-live="polite">HENTER VÆRVARSEL …</span>
@@ -159,6 +165,6 @@
  <script src="site-motion.js?v=palette-03" defer></script>
  <script src="studio.js?v=runner-form-06" defer></script>
  <script src="portrait-hover.js?v=portrait-hover-04" defer></script>
- <script src="bergen-weather.js?v=bergen-02" defer></script>
+ <script src="bergen-weather.js?v=bergen-compact-03" defer></script>
 </body>
 </html>
