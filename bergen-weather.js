@@ -13,7 +13,7 @@
   // A fresh fallback when the GitHub Pages CDN is still serving an older deploy.
   // This is the same file from the public repository, not an extra MET request.
   const SOURCE_BACKUP="https://raw.githubusercontent.com/Teammember102/mariuscdigranes.no/main/data/bergen-weather.json";
-  const KEY="bergen-hourly-site-cache-v3";
+  const KEY="bergen-hourly-site-cache-v4";
   const TZ="Europe/Oslo";
   const HOUR=3600000;
   const prefersReduced=window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -105,7 +105,7 @@
     bottom.append(rain,condition);hour.append(top,pict,temperature,bottom);
     return hour;
   }
-  function render(hours,updatedAt,stale){
+  function render(hours,updatedAt,checkedAt,stale){
     const upcoming=hours.filter(row=>Date.parse(row.time)>=Date.now()-HOUR).slice(0,24);
     if(!upcoming.length)throw new Error("Varslet er utløpt");
     const group=document.createElement("div");group.className="bergen-weather-group";
@@ -116,12 +116,13 @@
     track.replaceChildren(group,duplicate);
     viewport.scrollLeft=0;
     widthOfSet=group.getBoundingClientRect().width;
-    // Show the actual time the site last retrieved weather data, not page-load time.
-    // A previous-day label includes its date so an old clock time is never misleading.
-    const stamp=new Date(updatedAt);
-    if(!Number.isFinite(stamp.getTime()))throw new Error("Ukjent oppdateringstid");
+    // "Checked" is the actual scheduled server refresh time, never the page load.
+    // MET can return 304 Not Modified while the hourly check still succeeds.
+    const stamp=new Date(checkedAt||updatedAt);
+    if(!Number.isFinite(stamp.getTime()))throw new Error("Ukjent kontrolltid");
+    const age=Date.now()-stamp.getTime();
     const dateLabel=fmtDate.format(stamp)===fmtDate.format(new Date())?"":fmtUpdateDate.format(stamp)+" ";
-    status.textContent=(stale?"ELDRE VARSEL · ":"OPPDATERT ")+dateLabel+fmtUpdate.format(stamp);
+    status.textContent=(stale||age>90*60000?"ELDRE VARSEL · SIST SJEKKET ":"SIST SJEKKET ")+dateLabel+fmtUpdate.format(stamp);
   }
   function showFailure(){
     status.textContent="VARSEL IKKE TILGJENGELIG";
@@ -147,14 +148,15 @@
     const updatedAt=Date.parse(payload.updatedAt);
     if(!Number.isFinite(updatedAt))throw new Error("Værdata mangler oppdateringstid");
     const hours=parseForecast(payload);
-    return {hours,updatedAt};
+    const checkedAt=Number.isFinite(Date.parse(payload.checkedAt))?Date.parse(payload.checkedAt):updatedAt;
+    return {hours,updatedAt,checkedAt};
   }
   async function update(){
     if(busy)return;
     const cached=getCache();
     if(cached&&cached.hours.length){
       // Display cached weather while the latest snapshot loads, then replace it.
-      try{render(cached.hours,cached.updatedAt,Date.now()-cached.updatedAt>3*HOUR);}catch(_){}
+      try{render(cached.hours,cached.updatedAt,cached.checkedAt,Date.now()-(cached.checkedAt||cached.updatedAt)>90*60000);}catch(_){}
     }
     busy=true;
     const controller=new AbortController();
@@ -167,25 +169,25 @@
         snapshot=await readSnapshot(SOURCE_BACKUP,controller.signal);
       }
       // Pages may lag behind the GitHub repository by one or more deployments.
-      if(Date.now()-snapshot.updatedAt>90*60000){
+      if(Date.now()-(snapshot.checkedAt||snapshot.updatedAt)>90*60000){
         try{
           const latest=await readSnapshot(SOURCE_BACKUP,controller.signal);
-          if(latest.updatedAt>snapshot.updatedAt)snapshot=latest;
+          if((latest.checkedAt||latest.updatedAt)>(snapshot.checkedAt||snapshot.updatedAt))snapshot=latest;
         }catch(_){}
       }
-      if(cached&&cached.updatedAt>snapshot.updatedAt){
+      if(cached&&(cached.checkedAt||cached.updatedAt)>(snapshot.checkedAt||snapshot.updatedAt)){
         try{
           if(cached.hours.filter(row=>Date.parse(row.time)>=Date.now()-HOUR).length>=8){
-            snapshot={hours:cached.hours,updatedAt:cached.updatedAt};
+            snapshot={hours:cached.hours,updatedAt:cached.updatedAt,checkedAt:cached.checkedAt};
           }
         }catch(_){}
       }
       putCache({...snapshot,expires:Date.now()+5*60000});
-      render(snapshot.hours,snapshot.updatedAt,Date.now()-snapshot.updatedAt>3*HOUR);
+      render(snapshot.hours,snapshot.updatedAt,snapshot.checkedAt,Date.now()-(snapshot.checkedAt||snapshot.updatedAt)>90*60000);
     }catch(_){
       if(!cached||!cached.hours.length)showFailure();
       else{
-        try{render(cached.hours,cached.updatedAt,true);}catch(_){showFailure();}
+        try{render(cached.hours,cached.updatedAt,cached.checkedAt,true);}catch(_){showFailure();}
       }
     }finally{
       clearTimeout(timeout);
