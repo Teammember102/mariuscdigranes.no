@@ -1,0 +1,10 @@
+/* Before/after project comparison for SnapSeek. */
+.snapseek-comparison { margin-top:clamp(46px,6vw,90px); }
+.snapseek-comparison h2 { font:400 clamp(2.1rem,4.2vw,3.8rem)/1.12 var(--serif);letter-spacing:-.045em;margin:0 0 .75rem; }
+.snapseek-comparison>p {max-width:730px;color:var(--ink-soft);font-size:clamp(1rem,1.3vw,1.13rem);line-height:1.65;margin:0;}
+.snapseek-comparison .project-shots { margin-top:clamp(26px,3.7vw,52px); }
+.snapseek-comparison .project-shot figcaption {font-size:.86rem;line-height:1.6;padding-top:1rem;max-width:570px;}
+.snapseek-comparison .project-shot figcaption strong {color:var(--ink);}
+.snapseek-comparison .snapseek-shot-before {grid-column:1 / -1;max-width:920px;width:100%;margin-bottom:clamp(12px,1.6vw,26px);}
+.snapseek-comparison .snapseek-shot-before img {aspect-ratio:804 / 432;object-fit:contain;object-position:left top;background:#fff;}
+@media(max-width:680px){.snapseek-comparison .snapseek-shot-before{grid-column:auto;}}
