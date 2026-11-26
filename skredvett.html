@@ -1,4 +1,4 @@
-<!doctype html><html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>try{if(sessionStorage.getItem("meg-portfolio-preview-2026")!=="yes")location.replace("prosjekter.html?kommer-snart=skredvett");}catch(_){location.replace("prosjekter.html?kommer-snart=skredvett");}</script><meta name="theme-color" content="#FAFAF7"><meta name="description" content="Skredvett – prototype for turplanlegging med kart, vær og skredvarsler."><title>Skredvett – Marius Digranes</title><link rel="stylesheet" href="styles.css?v=palette-03"><link rel="stylesheet" href="project-detail.css?v=phones-balanced-2"><link rel="stylesheet" href="studio.css?v=palette-03"></head><body><a class="skip-link" href="#main">Hopp til innhold</a><header class="site-header"><div class="container navbar">
+<!doctype html><html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>try{if(sessionStorage.getItem("meg-portfolio-preview-2026")!=="yes")location.replace("prosjekter.html?kommer-snart=skredvett");}catch(_){location.replace("prosjekter.html?kommer-snart=skredvett");}</script><meta name="theme-color" content="#FAFAF7"><meta name="description" content="Skredvett – prototype for turplanlegging med kart, vær og skredvarsler."><title>Skredvett – Marius Digranes</title><link rel="stylesheet" href="styles.css?v=palette-03"><link rel="stylesheet" href="project-detail.css?v=phones-balanced-2"><link rel="stylesheet" href="studio.css?v=palette-03"><link rel="stylesheet" href="skredvett-showcase.css?v=lyngen-01"></head><body><a class="skip-link" href="#main">Hopp til innhold</a><header class="site-header"><div class="container navbar">
 <a class="brand" href="index.html" aria-label="Til forsiden"><span class="brand-mark" aria-hidden="true">M</span>Marius Digranes</a>
 <nav class="nav-links" aria-label="Hovedmeny"><a href="prosjekter.html">Prosjekter</a><a href="om-meg.html">Om meg</a><a href="cv.html">CV</a><a class="nav-accent" href="kontakt.html">Kontakt ↗</a></nav>
 </div></header>
@@ -7,30 +7,73 @@
 <p>Hvordan kan vi gjøre det enklere for folk på topptur å ta hensyn til skredfare når de planlegger en tur? I MIX203 utviklet vi Skredvett, en prototype som samler kart, vær og skredvarsler på ett sted. Gjennom innsiktsarbeid og prototyping utforsket vi hvordan brukeren kunne velge et fjellområde, sammenligne ruter og lagre turer til senere, med fokus på sikkerhet og brukervennlighet.</p>
 <div class="project-facts"><span>MIX203 · Universitetet i Bergen</span><span>2025</span><span>Prototype</span></div>
 </header>
-<div class="project-shots project-shots--phones" aria-label="Skjermbilder fra Skredvett-prototypen">
-  <figure class="project-shot">
-    <a href="assets/skredvett-kart-cutout.webp" target="_blank" rel="noopener noreferrer" aria-label="Vis kartvisning i full størrelse">
-      <img src="assets/skredvett-kart-cutout.webp" alt="Skredvett-prototypens kart over Lyngen med kartlag og meny for turplanlegging" width="941" height="1672" loading="lazy">
-    </a>
-    <figcaption>Kart og utforsking</figcaption>
+<div class="skredvett-showcase" aria-label="Fire skjermbilder fra Skredvett, i brukerens rekkefølge">
+  <figure class="skredvett-demo">
+    <div class="skredvett-phone" aria-label="1. Kart over Lyngen">
+      <div class="skredvett-phone-screen skredvett-map-screen">
+        <div class="skredvett-statusbar" aria-hidden="true"><span>09:41</span><span class="skredvett-island"></span><span>● ▰</span></div>
+        <div class="skredvett-map-area">
+          <iframe loading="lazy" title="Topografisk kart over Lyngenhalvøya" src="https://www.openstreetmap.org/export/embed.html?bbox=19.65%2C69.35%2C21.20%2C70.05&amp;layer=mapnik" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="skredvett-map-link" href="https://www.openstreetmap.org/#map=10/69.65/20.3" target="_blank" rel="noopener noreferrer" aria-label="Åpne Lyngen-kart i OpenStreetMap">↗</a>
+        </div>
+        <div class="skredvett-tabbar" aria-hidden="true"><span class="current"><b>◫</b>KART</span><span><b>♧</b>PLANLEGG</span><span><b>☁</b>SKRED/VÆR</span><span><b>▯</b>LAGRET</span></div>
+        <div class="skredvett-homebar" aria-hidden="true"></div>
+      </div>
+    </div>
+    <figcaption><strong>01 · Kart</strong><span>Utforsk Lyngen før turen planlegges.</span></figcaption>
   </figure>
-  <figure class="project-shot">
-    <a href="assets/skredvett-ruter-cutout.webp" target="_blank" rel="noopener noreferrer" aria-label="Vis ruteoversikt i full størrelse">
-      <img src="assets/skredvett-ruter-cutout.webp" alt="Oversikt over fjellturer med varighet, lengde, høydeforskjell og vanskelighetsgrad" width="941" height="1672" loading="lazy">
-    </a>
-    <figcaption>Planlegging og ruteoversikt</figcaption>
+  <figure class="skredvett-demo">
+    <div class="skredvett-phone" aria-label="2. Planlegg rute i Lyngen">
+      <div class="skredvett-phone-screen">
+        <div class="skredvett-statusbar" aria-hidden="true"><span>09:41</span><span class="skredvett-island"></span><span>● ▰</span></div>
+        <div class="skredvett-screen-body skredvett-plan-body">
+          <h2>PLANLEGG RUTE</h2>
+          <div class="skredvett-select">Troms og Finnmark<span>⌄</span></div>
+          <div class="skredvett-select">Lyngen<span>⌄</span></div>
+          <div class="skredvett-plan-space"></div>
+          <div class="skredvett-cta">TRYGGESTE RUTE<br>GENERERT AV KI</div>
+          <p>KI velger den beste ruten i området basert på informasjon om skredfare.</p>
+        </div>
+        <div class="skredvett-tabbar" aria-hidden="true"><span><b>◫</b>KART</span><span class="current"><b>♧</b>PLANLEGG</span><span><b>☁</b>SKRED/VÆR</span><span><b>▯</b>LAGRET</span></div>
+        <div class="skredvett-homebar" aria-hidden="true"></div>
+      </div>
+    </div>
+    <figcaption><strong>02 · Planlegg rute</strong><span>Velg Troms og Finnmark, deretter Lyngen.</span></figcaption>
   </figure>
-  <figure class="project-shot">
-    <a href="assets/skredvett-skredvarsel-balanced.webp" target="_blank" rel="noopener noreferrer" aria-label="Vis skredvarsel i full størrelse">
-      <img src="assets/skredvett-skredvarsel-balanced.webp" alt="Værmelding for Furuflaten med skredfarevarsel og vindinformasjon" width="941" height="1672" loading="lazy">
-    </a>
-    <figcaption>Vær og skredvarsler</figcaption>
+  <figure class="skredvett-demo">
+    <div class="skredvett-phone" aria-label="3. Ruteoversikt for Lyngen">
+      <div class="skredvett-phone-screen">
+        <div class="skredvett-statusbar" aria-hidden="true"><span>09:41</span><span class="skredvett-island"></span><span>● ▰</span></div>
+        <div class="skredvett-screen-body skredvett-routes-body">
+          <h2>RUTER I LYNGEN</h2>
+          <div class="skredvett-route-filters"><span class="chosen">Alle ruter</span><span>Lett</span><span>Middels</span><span>Krevende</span></div>
+          <div class="skredvett-route-card"><div class="skredvett-route-art">△</div><div><strong>Storgalten</strong><small>Topptur i Lyngen</small><small>● Krevende</small></div><span>›</span></div>
+          <div class="skredvett-route-card"><div class="skredvett-route-art">△</div><div><strong>Jiehkkevárri</strong><small>Topptur i Lyngen</small><small>● Krevende</small></div><span>›</span></div>
+          <div class="skredvett-route-card"><div class="skredvett-route-art">△</div><div><strong>Lenangstindane</strong><small>Fjellområde i Lyngen</small><small>● Krevende</small></div><span>›</span></div>
+          <div class="skredvett-route-card"><div class="skredvett-route-art">△</div><div><strong>Storfjellet</strong><small>Tur i Lyngen</small><small>● Middels</small></div><span>›</span></div>
+        </div>
+        <div class="skredvett-tabbar" aria-hidden="true"><span><b>◫</b>KART</span><span><b>♧</b>PLANLEGG</span><span><b>☁</b>SKRED/VÆR</span><span class="current"><b>▯</b>RUTER</span></div>
+        <div class="skredvett-homebar" aria-hidden="true"></div>
+      </div>
+    </div>
+    <figcaption><strong>03 · Ruter i Lyngen</strong><span>Sammenlign aktuelle turmuligheter.</span></figcaption>
   </figure>
-  <figure class="project-shot">
-    <a href="assets/skredvett-planlegg-rute-cutout.webp" target="_blank" rel="noopener noreferrer" aria-label="Vis Planlegg rute i full størrelse">
-      <img src="assets/skredvett-planlegg-rute-cutout.webp" alt="Planlegg rute: valg av fjellområde og forslag til tryggeste rute i Skredvett-prototypen" width="941" height="1672" loading="lazy">
-    </a>
-    <figcaption>Planlegg rute</figcaption>
+  <figure class="skredvett-demo">
+    <div class="skredvett-phone" aria-label="4. Skred- og værinformasjon i Lyngen, illustrativ eksempelvisning">
+      <div class="skredvett-phone-screen">
+        <div class="skredvett-statusbar" aria-hidden="true"><span>09:41</span><span class="skredvett-island"></span><span>● ▰</span></div>
+        <div class="skredvett-screen-body skredvett-weather-body">
+          <h2>SKRED/VÆR</h2>
+          <div class="skredvett-mountain-panel"><div class="skredvett-mountain-silhouette">△ △ △</div><strong>Lyngsalpene</strong><span>Skredvarsel og fjellvær</span></div>
+          <div class="skredvett-weather-card"><small>SKREDFARE · EKSEMPEL</small><div><span class="skredvett-risk-number">2</span><strong>Moderat</strong></div><p>Visning av skredvarsel for Lyngen. Eksempeldata, ikke et sanntidsvarsel.</p></div>
+          <div class="skredvett-weather-card"><small>FJELLVÆR · EKSEMPEL</small><div><strong>☁ −8 °C</strong></div><p>Vind, temperatur og sikt samlet på ett sted.</p></div>
+          <div class="skredvett-weather-detail">SE DETALJERT SKREDVARSEL ↗</div>
+        </div>
+        <div class="skredvett-tabbar" aria-hidden="true"><span><b>◫</b>KART</span><span><b>♧</b>PLANLEGG</span><span class="current"><b>☁</b>SKRED/VÆR</span><span><b>▯</b>LAGRET</span></div>
+        <div class="skredvett-homebar" aria-hidden="true"></div>
+      </div>
+    </div>
+    <figcaption><strong>04 · Skred og vær</strong><span>Samlet oversikt for Lyngen, med illustrerte eksempeldata.</span></figcaption>
   </figure>
 </div>
 <a class="project-back" href="prosjekter.html">← Tilbake til prosjektene</a>
