@@ -1,12 +1,24 @@
-/* Both phones are cropped from THE SAME four-phone image; same geometry and scale.
-   Quarter 1 = map, quarter 3 = avalanche/weather. */
+/* Skredvett: the same full-resolution mockups used inside the project.
+   Both are cropped from the original four-phone composite at identical scale. */
+.studio-project-media--skred {
+  min-height: clamp(450px, 51vw, 700px);
+  padding: clamp(22px, 2.6vw, 40px);
+}
+.studio-project-media--skred .studio-phone-stack {
+  gap: clamp(8px, 1.2vw, 20px);
+  height: 100%;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+}
 .studio-phone-stack > .studio-skred-phone {
   position: relative;
   display: block;
-  flex: 0 0 46%;
-  width: 46%;
+  flex: 0 1 auto;
+  width: auto;
+  height: min(96%, 625px);
+  max-width: calc(50% - 10px);
   aspect-ratio: 768 / 1606;
-  max-height: 500px;
   overflow: hidden;
   filter: drop-shadow(8px 15px 9px rgba(45,43,35,.16));
   transform: rotate(-5deg) translateY(8px);
@@ -28,10 +40,20 @@
   transform: none !important;
   filter: none;
 }
-.studio-phone-stack > .studio-skred-phone--weather > img {left:-200%;}
+.studio-phone-stack > .studio-skred-phone--weather > img { left:-200%; }
 .studio-project:hover .studio-phone-stack > .studio-skred-phone--map {
   transform: rotate(-2deg) translateY(-3px);
 }
 .studio-project:hover .studio-phone-stack > .studio-skred-phone--weather {
   transform: rotate(3deg) translateY(-10px);
+}
+@media (max-width:700px) {
+  .studio-project-media--skred {
+    min-height: clamp(365px, 110vw, 540px);
+    padding: 20px 12px;
+  }
+  .studio-phone-stack > .studio-skred-phone {
+    height: min(95%, 480px);
+    max-width: calc(50% - 6px);
+  }
 }
