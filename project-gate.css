@@ -89,3 +89,12 @@
 @media(prefers-reduced-motion:reduce) {
   .project-coming-soon-close { transition:none; }
 }
+
+/* Optional project preview access within the coming-soon modal. */
+.project-preview-form{width:100%;margin:0 0 24px;display:flex;flex-direction:column;gap:10px;}
+.project-preview-form label{font-weight:800;font-size:.82rem;letter-spacing:.02em;}
+.project-preview-input-row{display:flex;flex-wrap:wrap;gap:8px;}
+.project-preview-input-row input{flex:1 1 150px;min-width:0;padding:12px;border:2px solid #14171D;background:#fff;color:#14171D;font:inherit;}
+.project-preview-input-row button{padding:12px 16px;background:#023BE6;color:white;border:2px solid #14171D;font:800 .8rem var(--sans,Arial,sans-serif);cursor:pointer;}
+.project-preview-input-row :focus-visible{outline:3px solid #023BE6;outline-offset:3px;}
+.project-preview-error{color:#a92323;font-weight:750;margin:0!important;font-size:.78rem!important;}
