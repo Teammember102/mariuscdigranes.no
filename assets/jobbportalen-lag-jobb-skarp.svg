@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1793 877" role="img" aria-labelledby="title desc">
+<title id="title">Jobbportalen – Lag jobb</title><desc id="desc">Skjermbilde av TekLab Jobbportalen med hele toppmenyen og skjemaet Lag jobb, uten bunntekst. Skarpe vektorelementer.</desc>
+<defs>
+<linearGradient id="pale" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#dfecff"/><stop offset="1" stop-color="#dfeeff"/></linearGradient>
+<linearGradient id="roundBlue" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#0078aa"/><stop offset="1" stop-color="#00608d"/></linearGradient>
+<linearGradient id="lens" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#a6debd"/><stop offset=".55" stop-color="#11b5ab"/><stop offset="1" stop-color="#1b6c92"/></linearGradient>
+</defs>
+<rect width="1793" height="877" fill="#fff"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#050505">
+  <circle cx="41" cy="38" r="21" fill="#dce1e2" stroke="#9baab0" stroke-width="2"/>
+  <circle cx="42" cy="37" r="16" fill="url(#lens)" stroke="#fff" stroke-width="1.4"/>
+  <line x1="29" y1="50" x2="16" y2="65" stroke="#b7c4ca" stroke-width="5" stroke-linecap="round"/>
+  <text x="70" y="51" font-size="36" font-weight="800">TekLab</text>
+  <g font-size="13.5" font-weight="700" letter-spacing="5">
+    <text x="271" y="43">OM TEKLAB</text>
+    <text x="566" y="43">JOBBPORTALEN</text>
+    <text x="915" y="43">PUBLIKASJONER</text>
+    <text x="1243" y="43">FORSKNING</text>
+    <text x="1521" y="43">ARRANGEMENT</text>
+  </g>
+  <g stroke="#222" fill="none" stroke-width="1.2"><path d="M433 34l5 5 5-5"/><path d="M783 34l5 5 5-5"/><path d="M1133 34l5 5 5-5"/><path d="M1400 34l5 5 5-5"/><path d="M1724 34l5 5 5-5"/></g>
+  <text x="143" y="195" font-size="83" font-weight="800" letter-spacing="-3">Lag jobb</text>
+  <path d="M1472 164h-32m0 0 12-12m-12 12 12 12" fill="none" stroke="#050505" stroke-width="3.6"/>
+  <text x="1508" y="174" font-size="24" font-weight="700">Tilbake</text>
+</g>
+<rect x="143" y="242" width="1477" height="589" rx="10" fill="url(#pale)"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#080808" font-size="18" font-weight="700">
+  <text x="191" y="278">Stillingstittel</text>
+  <text x="191" y="371">Frist for svar</text>
+  <text x="191" y="470">Beskrivelse av stilling</text>
+  <text x="1085" y="278">Navn på organisasjon eller prosjektgruppe</text>
+  <text x="1085" y="371">Sted for stillingen</text>
+  <text x="1085" y="472">Oppstartsdato</text>
+  <text x="1085" y="572">Varighet</text>
+  <text x="1085" y="671">Legg ved link</text>
+</g>
+<g fill="#f4f8ff" fill-opacity=".56" stroke="#646464" stroke-width="1.4">
+  <rect x="191" y="289" width="705" height="54" rx="4"/>
+  <rect x="191" y="382" width="705" height="54" rx="4"/>
+  <rect x="191" y="483" width="705" height="217" rx="4"/>
+  <rect x="1085" y="289" width="458" height="54" rx="4"/>
+  <rect x="1085" y="382" width="458" height="54" rx="4"/>
+  <rect x="1085" y="483" width="458" height="54" rx="4"/>
+  <rect x="1085" y="582" width="458" height="54" rx="4"/>
+  <rect x="1085" y="681" width="458" height="54" rx="4"/>
+</g>
+<text x="214" y="517" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="600" fill="#9ca3aa">Skriv her...</text>
+<g font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-size="22" font-weight="700">
+  <rect x="191" y="738" width="225" height="62" rx="32" fill="url(#roundBlue)"/>
+  <rect x="426" y="738" width="235" height="62" rx="32" fill="url(#roundBlue)"/>
+  <rect x="670" y="738" width="226" height="62" rx="32" fill="url(#roundBlue)"/>
+  <text x="303" y="777" fill="white">Ta bilde</text>
+  <text x="544" y="777" fill="white">Last opp bilde</text>
+  <text x="783" y="777" fill="white">Bibliotek</text>
+  <rect x="1344" y="733" width="199" height="68" rx="34" fill="#77e344"/>
+  <text x="1444" y="777" fill="#080808" font-size="29" font-weight="800">FULLFØR</text>
+</g>
+</svg>
