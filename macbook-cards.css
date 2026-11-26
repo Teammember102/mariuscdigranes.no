@@ -1,72 +1,146 @@
-/* Portfolio cards: keep the actual redesigned SnapSeek screenshot, framed as a laptop. */
-.studio-project-media--snap .studio-macbook {
-  position: relative;
-  width: min(100%, 850px);
-  margin: auto;
-  transform: rotate(-2deg);
-  transform-origin: center center;
-  transition: transform .55s cubic-bezier(.16,1,.3,1);
-  filter: drop-shadow(9px 17px 14px rgba(25,31,43,.23));
+/* SnapSeek: the real redesign screenshot displayed inside a polished CSS laptop.
+   No generative modification of the interface or screen image. */
+.studio-project-media--snap .studio-macbook{
+  position:relative;
+  width:min(100%,790px);
+  margin:auto;
+  isolation:isolate;
+  transform:rotate(-2deg);
+  transform-origin:50% 65%;
+  filter:drop-shadow(0 17px 14px rgba(28,30,43,.23));
+  transition:transform .65s cubic-bezier(.16,1,.3,1), filter .65s;
 }
-.studio-project:hover .studio-project-media--snap .studio-macbook {
-  transform: rotate(0deg) scale(1.035);
+.studio-project:hover .studio-project-media--snap .studio-macbook{
+  transform:rotate(0deg) scale(1.025);
+  filter:drop-shadow(0 22px 19px rgba(28,30,43,.28));
 }
-.studio-macbook-screen {
-  position: relative;
-  width: 91%;
-  margin: 0 auto;
-  padding: 2.8% 2.2% 3.1%;
-  border: 2px solid #626a71;
-  border-radius: 12px 12px 4px 4px;
-  background: linear-gradient(145deg,#24272c,#090b10 55%,#161a20);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.23);
+/* Display enclosure — thin aluminum trim, deep black bezel, real camera */
+.studio-macbook-screen{
+  box-sizing:border-box;
+  position:relative;
+  z-index:3;
+  width:90%;
+  margin:0 auto;
+  padding:3.1% 2.25% 2.5%;
+  background:linear-gradient(130deg,#333942,#080a0d 22%,#121419 80%,#242933);
+  border:2px solid #9299a3;
+  border-bottom:4px solid #373b42;
+  border-radius:15px 15px 5px 5px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.23),
+    0 1px 0 rgba(255,255,255,.75),0 5px 8px rgba(0,0,0,.18);
 }
-.studio-macbook-screen:before {
-  content: "";
-  position: absolute;
-  top: 1.15%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background:#3a4758;
+.studio-macbook-screen:before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:1.05%;
+  transform:translateX(-50%);
+  width:5px;height:5px;
+  border-radius:50%;
+  background:radial-gradient(circle at 38% 34%,#496b88 0 14%,#122132 32%,#05080f 67%,#4b4d51 83%);
+  box-shadow:0 0 0 1px #20252b;
 }
-.studio-project-media--snap .studio-macbook-screen > img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: none;
-  aspect-ratio: 2047/1030;
-  object-fit: contain;
-  border-radius: 1px;
-  box-shadow: none;
-  transform: none !important;
-  filter: none;
+.studio-project-media--snap .studio-macbook-screen>img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:2047 / 1030;
+  object-fit:contain;
+  max-height:none;
+  border:1px solid rgba(200,206,216,.24);
+  border-radius:2px;
+  box-shadow:0 0 5px rgba(191,210,240,.16);
+  transform:none!important;
+  filter:none;
 }
-.studio-macbook-hinge {
-  width: 91%;
-  height: 3px;
-  margin: -2px auto 0;
-  background: #15181e;
+.studio-macbook-hinge{
+  position:relative;
+  z-index:2;
+  height:5px;
+  width:89%;
+  margin:-2px auto 0;
+  border-radius:0 0 5px 5px;
+  background:linear-gradient(to bottom,#08090c,#43464e 45%,#18191d);
 }
-.studio-macbook-base {
-  height: clamp(8px,1.2vw,15px);
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 2px 2px 50% 50%/2px 2px 75% 75%;
-  background: linear-gradient(to bottom,#a7abb0 0%,#e6e8e9 33%,#95999e 72%,#73777a 100%);
-  box-shadow: 0 3px 4px rgba(0,0,0,.14);
+/* Keyboard deck is visible as the laptop's lower half, not a thin silver line */
+.studio-macbook-deck{
+  position:relative;
+  z-index:1;
+  box-sizing:border-box;
+  width:100%;
+  height:clamp(84px,9.5vw,132px);
+  margin:-1px auto 0;
+  padding:7px 7% 8px;
+  background:linear-gradient(135deg,#f1f2f5 0%,#cfd2d8 20%,#aeb3bd 55%,#e1e3e8 86%,#9ca0a9 100%);
+  clip-path:polygon(5% 0,95% 0,100% 100%,0 100%);
+  box-shadow:inset 0 5px 8px rgba(50,57,71,.24);
 }
-.studio-macbook-notch {
-  display: block;
-  width: 14%;
-  height: 40%;
-  margin: auto;
-  border-radius: 0 0 8px 8px;
-  background:linear-gradient(to bottom,#848990,#d2d5d8);
+.studio-macbook-keyboard{
+  box-sizing:border-box;
+  width:81%;
+  height:65%;
+  margin:0 auto;
+  padding:4px 5px 3px;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  border:1px solid #888c96;
+  border-radius:4px 4px 8px 8px;
+  background:linear-gradient(120deg,#a3a7ae,#cbced4,#a6aab1);
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.14),0 1px rgba(255,255,255,.5);
 }
-@media(max-width:700px) {
-  .studio-project-media--snap .studio-macbook {width:100%;}
-  .studio-macbook-screen {border-width:1px;border-radius:7px 7px 2px 2px;}
+.studio-macbook-key-row{
+  display:flex;
+  gap:2px;
+  flex:1;
+  min-height:0;
+}
+.studio-macbook-key-row>i{
+  flex:1;
+  display:block;
+  min-width:0;
+  border-radius:2px;
+  background:linear-gradient(to bottom,#32343b 0%,#171920 62%,#111217 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 1px 1px rgba(0,0,0,.4);
+}
+.studio-macbook-key-row>i.studio-macbook-space{flex:3.8;}
+.studio-macbook-trackpad{
+  box-sizing:border-box;
+  width:29%;
+  height:31%;
+  margin:5px auto 0;
+  border:1px solid rgba(99,105,116,.35);
+  border-top-color:rgba(81,89,100,.48);
+  border-radius:3px 3px 5px 5px;
+  background:linear-gradient(130deg,rgba(239,241,245,.24),rgba(190,197,209,.06));
+  box-shadow:inset 0 1px 2px rgba(37,44,54,.13),0 1px 0 rgba(255,255,255,.45);
+}
+.studio-macbook-front-edge{
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:clamp(5px,.7vw,9px);
+  margin:-1px auto 0;
+  border-radius:2px 2px 35% 35% / 2px 2px 100% 100%;
+  background:linear-gradient(to bottom,#acb0b8,#f2f3f5 35%,#777d88 83%,#505661);
+  box-shadow:0 3px 5px rgba(42,48,61,.23);
+}
+.studio-macbook-front-edge>span{
+  display:block;
+  width:15%;
+  height:48%;
+  margin:0 auto;
+  border-radius:0 0 9px 9px;
+  background:linear-gradient(to bottom,#7c828c,#d7d9dd);
+}
+@media(max-width:700px){
+  .studio-project-media--snap .studio-macbook{width:100%;}
+  .studio-macbook-screen{border-width:1px;border-bottom-width:3px;border-radius:9px 9px 4px 4px;}
+  .studio-macbook-deck{height:clamp(58px,18vw,100px);padding:4px 7% 5px;}
+  .studio-macbook-keyboard{gap:2px;padding:2px 3px;}
+  .studio-macbook-key-row{gap:1px;}
+  .studio-macbook-trackpad{margin-top:3px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .studio-project-media--snap .studio-macbook{transition:none;}
 }
