@@ -3,8 +3,10 @@
 .studio-phone-stack > .studio-weather-phone {
   position: relative;
   display: block;
-  flex: 0 0 46%;
-  width: 46%;
+  /* Crop from the 4-phone composite is narrower than the standalone map image.
+     Match its rendered HEIGHT to the neighboring 46%-wide phone. */
+  flex: 0 0 39%;
+  width: 39%;
   aspect-ratio: 768 / 1606;
   max-height: 500px;
   overflow: hidden;
