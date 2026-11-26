@@ -1,0 +1,24 @@
+/* Jobbportalen: display-only screenshots; the right screenshot has a dark edge in the source. */
+.project-shots--jobbportalen .jobbportalen-image-frame{
+  display:block;
+  width:100%;
+  aspect-ratio:1.74;
+  overflow:hidden;
+  background:transparent;
+}
+.project-shots--jobbportalen .jobbportalen-image-frame img{
+  display:block;
+  width:100%;
+  height:100%;
+  aspect-ratio:auto;
+  object-fit:cover;
+  object-position:center;
+  max-width:none;
+}
+.project-shots--jobbportalen .jobbportalen-image-frame--trim img{
+  transform:scale(1.05);
+  transform-origin:center;
+}
+@media(max-width:680px){
+  .project-shots--jobbportalen .jobbportalen-image-frame{aspect-ratio:1.74;}
+}
