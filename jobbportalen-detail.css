@@ -1,24 +1,29 @@
-/* Jobbportalen: display-only screenshots; the right screenshot has a dark edge in the source. */
-.project-shots--jobbportalen .jobbportalen-image-frame{
+/* Jobbportalen: preserve the entire original screenshots, including the top navigation. */
+.project-shots--jobbportalen .jobbportalen-image-frame {
   display:block;
   width:100%;
-  aspect-ratio:1.74;
-  overflow:hidden;
+  height:auto;
+  overflow:visible;
+  position:relative;
   background:transparent;
 }
-.project-shots--jobbportalen .jobbportalen-image-frame img{
+.project-shots--jobbportalen .jobbportalen-image-frame img {
   display:block;
   width:100%;
-  height:100%;
+  height:auto;
   aspect-ratio:auto;
-  object-fit:cover;
+  object-fit:contain;
   object-position:center;
-  max-width:none;
+  max-width:100%;
+  transform:none;
 }
-.project-shots--jobbportalen .jobbportalen-image-frame--trim img{
-  transform:scale(1.05);
-  transform-origin:center;
-}
-@media(max-width:680px){
-  .project-shots--jobbportalen .jobbportalen-image-frame{aspect-ratio:1.74;}
+/* Mask only the dark outermost right/bottom edge, without zooming or cropping the top menu. */
+.project-shots--jobbportalen .jobbportalen-image-frame--trim::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-right:3px solid var(--paper, #fafaf7);
+  border-bottom:3px solid var(--paper, #fafaf7);
+  box-sizing:border-box;
 }
