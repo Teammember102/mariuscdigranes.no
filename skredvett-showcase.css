@@ -1,0 +1,50 @@
+/* Skredvett · four iPhone-style prototype screens presented in user journey order. */
+.skredvett-showcase{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,24px);margin-top:clamp(45px,6vw,85px);align-items:start;}
+.skredvett-demo{margin:0;min-width:0;}
+.skredvett-phone{width:100%;aspect-ratio:9 / 18.5;background:linear-gradient(135deg,#47494b,#08090a 14%,#111 76%,#717477);border:3px solid #44484a;border-radius:clamp(23px,3vw,44px);padding:4px;box-shadow:0 16px 32px rgba(12,24,39,.18),inset 0 0 0 1px #8c9091;overflow:hidden;}
+.skredvett-phone-screen{position:relative;display:flex;flex-direction:column;height:100%;overflow:hidden;border-radius:clamp(19px,2.75vw,40px);background:#fcf8f1;color:#16334a;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;}
+.skredvett-statusbar{height:7%;min-height:21px;display:flex;align-items:center;justify-content:space-between;padding:0 8%;font-size:clamp(6px,.68vw,12px);font-weight:800;color:#111;position:relative;z-index:3;}
+.skredvett-island{position:absolute;left:36%;right:36%;height:48%;top:14%;border-radius:30px;background:#080808;}
+.skredvett-tabbar{height:12%;min-height:35px;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;background:rgba(255,255,255,.96);border-top:1px solid #ededed;color:#9ba3ab;}
+.skredvett-tabbar span{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:clamp(5px,.6vw,10px);white-space:nowrap;}
+.skredvett-tabbar b{font-size:clamp(17px,2.2vw,29px);font-weight:400;line-height:1;}
+.skredvett-tabbar .current{color:#162a3d;font-weight:800;}
+.skredvett-homebar{position:absolute;bottom:1.1%;left:36%;width:28%;height:4px;border-radius:20px;background:#0b0b0b;}
+.skredvett-map-area{position:relative;flex:1;min-height:0;margin-top:-7%;background:#b1d6cb;}
+.skredvett-map-area iframe{width:100%;height:100%;border:0;display:block;pointer-events:none;}
+.skredvett-map-link{position:absolute;right:9px;bottom:12px;display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:white;color:#173748;text-decoration:none;font-size:19px;box-shadow:0 2px 8px #0002;}
+.skredvett-screen-body{flex:1;min-height:0;overflow:hidden;padding:8% 8% 7%;}
+.skredvett-screen-body h2{text-align:center;font-size:clamp(12px,1.42vw,23px);font-weight:900;letter-spacing:-.045em;margin:3% 0 15%;line-height:1.12;color:#234c65;}
+.skredvett-select{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid #d7dcdf;border-radius:7px;min-height:8%;padding:7% 8%;margin-bottom:10%;font-size:clamp(8px,.97vw,15px);font-weight:600;color:#151515;}
+.skredvett-select span{font-size:1.7em;font-weight:400;}
+.skredvett-plan-body{display:flex;flex-direction:column;}
+.skredvett-plan-space{flex:1;min-height:7%;}
+.skredvett-cta,.skredvett-weather-detail{border-radius:8px;background:#294b1c;color:white;text-align:center;font-size:clamp(8px,1vw,16px);line-height:1.25;font-weight:700;padding:8% 4%;}
+.skredvett-plan-body p{font-size:clamp(7px,.78vw,12px);font-weight:600;color:#9da4aa;text-align:center;line-height:1.35;margin:12% 6% 14%;}
+.skredvett-routes-body{padding-left:5%;padding-right:5%;}
+.skredvett-routes-body h2{margin-bottom:10%;}
+.skredvett-route-filters{display:flex;gap:3px;margin-bottom:8%;}
+.skredvett-route-filters span{background:white;border-radius:25px;padding:5px 6px;font-size:clamp(5px,.65vw,10px);color:#27323a;white-space:nowrap;}
+.skredvett-route-filters .chosen{background:#2d531e;color:white;}
+.skredvett-route-card{display:grid;grid-template-columns:33% 1fr auto;align-items:center;gap:6px;margin-bottom:5%;padding:4%;border-radius:10px;background:#fff;box-shadow:0 2px 9px #0000000c;color:#152d41;}
+.skredvett-route-art{height:100%;min-height:45px;border-radius:7px;display:grid;place-items:center;background:linear-gradient(155deg,#7e9fb4 3%,#d6dee6 46%,#a0b6c7 47%,#617c97 100%);color:white;font-size:clamp(18px,2.8vw,45px);text-shadow:1px 3px 8px #243c58;}
+.skredvett-route-card strong{display:block;font-size:clamp(7px,.87vw,14px);line-height:1.1;overflow-wrap:anywhere;}
+.skredvett-route-card small{display:block;color:#63717e;font-size:clamp(5px,.62vw,10px);padding-top:3px;}
+.skredvett-route-card>span{font-size:clamp(13px,1.5vw,26px);}
+.skredvett-weather-body{padding-left:6%;padding-right:6%;}
+.skredvett-weather-body h2{margin-bottom:10%;}
+.skredvett-mountain-panel{height:28%;border-radius:10px;display:flex;flex-direction:column;justify-content:end;padding:6%;color:white;background:linear-gradient(0deg,#15394bdb,transparent 65%),linear-gradient(155deg,#d2afaa 0%,#8ba4b6 35%,#e9e5dd 56%,#567289 57%,#21405b);overflow:hidden;}
+.skredvett-mountain-silhouette{font-size:clamp(33px,5vw,80px);line-height:.7;letter-spacing:-.35em;color:#f2f0ecaa;align-self:center;margin:auto;}
+.skredvett-mountain-panel strong{font-size:clamp(10px,1.25vw,21px);}
+.skredvett-mountain-panel span{font-size:clamp(7px,.76vw,13px);}
+.skredvett-weather-card{padding:5%;background:white;border:1px solid #e2e0db;border-radius:11px;margin-top:6%;box-shadow:0 2px 8px #0000000a;}
+.skredvett-weather-card small{font-size:clamp(6px,.73vw,12px);color:#71818b;font-weight:800;}
+.skredvett-weather-card>div{display:flex;align-items:center;gap:9%;margin-top:5%;}
+.skredvett-weather-card strong{font-size:clamp(11px,1.5vw,22px);}
+.skredvett-risk-number{background:#8caf64;color:white;font-weight:900;padding:4% 8%;border-radius:8px;font-size:clamp(15px,2vw,31px);}
+.skredvett-weather-card p{font-size:clamp(7px,.72vw,11px);line-height:1.3;color:#64717b;margin:6% 0 0;}
+.skredvett-weather-detail{font-size:clamp(6px,.8vw,12px);margin-top:6%;padding:5%;}
+.skredvett-demo figcaption{display:flex;flex-direction:column;gap:4px;text-align:center;font-size:.78rem;line-height:1.45;margin-top:14px;color:#727985;}
+.skredvett-demo figcaption strong{color:#263b4d;font-size:.86rem;}
+@media(max-width:1050px){.skredvett-showcase{grid-template-columns:repeat(2,minmax(0,330px));justify-content:center;gap:35px 24px}.skredvett-screen-body h2{font-size:clamp(16px,2.5vw,24px)}.skredvett-route-card strong{font-size:clamp(9px,1.45vw,14px)}.skredvett-route-card small{font-size:clamp(7px,1vw,10px)}.skredvett-select{font-size:clamp(12px,1.8vw,16px)}.skredvett-cta{font-size:clamp(11px,1.65vw,16px)}.skredvett-plan-body p{font-size:clamp(9px,1.3vw,13px)}.skredvett-tabbar span{font-size:clamp(7px,1vw,10px)}.skredvett-tabbar b{font-size:clamp(20px,3vw,29px)}.skredvett-statusbar{font-size:clamp(9px,1.2vw,12px)}}
+@media(max-width:550px){.skredvett-showcase{grid-template-columns:minmax(0,330px);gap:35px}.skredvett-screen-body h2{font-size:22px}.skredvett-select{font-size:15px}.skredvett-cta{font-size:14px}.skredvett-plan-body p{font-size:12px}.skredvett-tabbar span{font-size:9px}.skredvett-tabbar b{font-size:25px}.skredvett-statusbar{font-size:11px}.skredvett-route-card strong{font-size:13px}.skredvett-route-card small{font-size:10px}.skredvett-route-filters span{font-size:9px}.skredvett-weather-card small{font-size:10px}.skredvett-weather-card strong{font-size:19px}.skredvett-weather-card p{font-size:10px}.skredvett-mountain-panel strong{font-size:18px}.skredvett-mountain-panel span{font-size:11px}.skredvett-weather-detail{font-size:11px}}
